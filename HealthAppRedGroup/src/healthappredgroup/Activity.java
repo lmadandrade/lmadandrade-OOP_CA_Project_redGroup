@@ -8,14 +8,15 @@ package healthappredgroup;
  *
  * @author lucasandrade
  */
-public class SleepTracker {
-    private double sleepHours;
+public class Activity {
+    private String type;
+    private double duration;
     
-    public void logSleepHours(double hours){
-    // TODO
+    public void addActivity (String type, double duration){
+    // TO Do
     }
     
-    public void viewSleepSummary(){
+    public void viewActivity(){
     // TODO
     }
     
