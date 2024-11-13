@@ -17,7 +17,7 @@ public class RedGroup_ProjectSkeleton {
     public static void main(String[] args) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RedGroup_ProjectAppGUI().setVisible(true);
+                new RedGroup_LoginPageGUI().setVisible(true);
             }
         });
      }
