@@ -23,13 +23,240 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="jPanel1">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="age_Section1Label" min="-2" max="-2" attributes="0"/>
+                              <Component id="name_Section1Label" min="-2" max="-2" attributes="0"/>
+                              <Component id="weight_Section1Label" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="height_Section1Label" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="activityLevel_Section1Label" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="goal_Section1Label" alignment="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="height_Section1Input" min="-2" max="-2" attributes="0"/>
+                                      <Component id="goal_Section1Input" min="-2" max="-2" attributes="0"/>
+                                      <Component id="activityLevel_Section1Input" min="-2" max="-2" attributes="0"/>
+                                      <Component id="name_Section1Input" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="weight_Section1Input" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="age_Section1Input" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="smsNotification_Label" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="emailNotification_Label" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="pushNotification_Label" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <Component id="updateButton_Section1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="emailNotification_checkBox" min="-2" max="-2" attributes="0"/>
+                      <Component id="smsNotification_checkBox" min="-2" max="-2" attributes="0"/>
+                      <Component id="pushNotification_checkBox" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" pref="92" max="-2" attributes="0"/>
+                  <EmptySpace pref="209" max="32767" attributes="0"/>
+                  <Component id="notificationPreferenceLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="notificationButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="notificationPreferenceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="notificationButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="name_Section1Label" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="name_Section1Input" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="age_Section1Label" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="age_Section1Input" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="weight_Section1Label" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="weight_Section1Input" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="height_Section1Label" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="height_Section1Input" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="activityLevel_Section1Label" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="activityLevel_Section1Input" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="goal_Section1Label" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="goal_Section1Input" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="updateButton_Section1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="emailNotification_Label" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="emailNotification_checkBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="pushNotification_Label" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="pushNotification_checkBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="smsNotification_Label" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="smsNotification_checkBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="98" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="User Profile:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="name_Section1Label">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Name:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="age_Section1Label">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Age:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="weight_Section1Label">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Weight:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="height_Section1Label">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Height:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="activityLevel_Section1Label">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Activity Level:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="goal_Section1Label">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Goals:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="updateButton_Section1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Update Details"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="name_Section1Input">
+        </Component>
+        <Component class="javax.swing.JTextField" name="age_Section1Input">
+        </Component>
+        <Component class="javax.swing.JTextField" name="weight_Section1Input">
+        </Component>
+        <Component class="javax.swing.JTextField" name="height_Section1Input">
+        </Component>
+        <Component class="javax.swing.JTextField" name="goal_Section1Input">
+        </Component>
+        <Component class="javax.swing.JTextField" name="activityLevel_Section1Input">
+        </Component>
+        <Component class="javax.swing.JLabel" name="notificationPreferenceLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Notification Preferences:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JToggleButton" name="notificationButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="On"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="emailNotification_Label">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Email"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="pushNotification_Label">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Push"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="smsNotification_Label">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="SMS"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="emailNotification_checkBox">
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="smsNotification_checkBox">
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="pushNotification_checkBox">
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
 </Form>

@@ -26,17 +26,174 @@ public class Section1Frame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        name_Section1Label = new javax.swing.JLabel();
+        age_Section1Label = new javax.swing.JLabel();
+        weight_Section1Label = new javax.swing.JLabel();
+        height_Section1Label = new javax.swing.JLabel();
+        activityLevel_Section1Label = new javax.swing.JLabel();
+        goal_Section1Label = new javax.swing.JLabel();
+        updateButton_Section1 = new javax.swing.JButton();
+        name_Section1Input = new javax.swing.JTextField();
+        age_Section1Input = new javax.swing.JTextField();
+        weight_Section1Input = new javax.swing.JTextField();
+        height_Section1Input = new javax.swing.JTextField();
+        goal_Section1Input = new javax.swing.JTextField();
+        activityLevel_Section1Input = new javax.swing.JTextField();
+        notificationPreferenceLabel = new javax.swing.JLabel();
+        notificationButton = new javax.swing.JToggleButton();
+        emailNotification_Label = new javax.swing.JLabel();
+        pushNotification_Label = new javax.swing.JLabel();
+        smsNotification_Label = new javax.swing.JLabel();
+        emailNotification_checkBox = new javax.swing.JCheckBox();
+        smsNotification_checkBox = new javax.swing.JCheckBox();
+        pushNotification_checkBox = new javax.swing.JCheckBox();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("User Profile:");
+
+        name_Section1Label.setText("Name:");
+
+        age_Section1Label.setText("Age:");
+
+        weight_Section1Label.setText("Weight:");
+
+        height_Section1Label.setText("Height:");
+
+        activityLevel_Section1Label.setText("Activity Level:");
+
+        goal_Section1Label.setText("Goals:");
+
+        updateButton_Section1.setText("Update Details");
+
+        notificationPreferenceLabel.setText("Notification Preferences:");
+
+        notificationButton.setText("On");
+
+        emailNotification_Label.setText("Email");
+
+        pushNotification_Label.setText("Push");
+
+        smsNotification_Label.setText("SMS");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(age_Section1Label)
+                            .addComponent(name_Section1Label)
+                            .addComponent(weight_Section1Label)
+                            .addComponent(height_Section1Label)
+                            .addComponent(activityLevel_Section1Label)
+                            .addComponent(goal_Section1Label))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(height_Section1Input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(goal_Section1Input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(activityLevel_Section1Input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(name_Section1Input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(weight_Section1Input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(age_Section1Input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(smsNotification_Label, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(emailNotification_Label, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(pushNotification_Label, javax.swing.GroupLayout.Alignment.TRAILING)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(updateButton_Section1)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(emailNotification_checkBox)
+                    .addComponent(smsNotification_checkBox)
+                    .addComponent(pushNotification_checkBox))
+                .addGap(61, 61, 61))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
+                .addComponent(notificationPreferenceLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(notificationButton)
+                .addGap(77, 77, 77))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(notificationPreferenceLabel)
+                    .addComponent(notificationButton))
+                .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(name_Section1Label)
+                    .addComponent(name_Section1Input, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(age_Section1Label)
+                            .addComponent(age_Section1Input, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(weight_Section1Label)
+                            .addComponent(weight_Section1Input, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(height_Section1Label)
+                            .addComponent(height_Section1Input, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(activityLevel_Section1Label)
+                            .addComponent(activityLevel_Section1Input, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(goal_Section1Label)
+                            .addComponent(goal_Section1Input, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(updateButton_Section1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(emailNotification_Label)
+                            .addComponent(emailNotification_checkBox))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(pushNotification_Label)
+                            .addComponent(pushNotification_checkBox))
+                        .addGap(4, 4, 4)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(smsNotification_Label)
+                            .addComponent(smsNotification_checkBox))))
+                .addContainerGap(98, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -78,5 +235,28 @@ public class Section1Frame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField activityLevel_Section1Input;
+    private javax.swing.JLabel activityLevel_Section1Label;
+    private javax.swing.JTextField age_Section1Input;
+    private javax.swing.JLabel age_Section1Label;
+    private javax.swing.JLabel emailNotification_Label;
+    private javax.swing.JCheckBox emailNotification_checkBox;
+    private javax.swing.JTextField goal_Section1Input;
+    private javax.swing.JLabel goal_Section1Label;
+    private javax.swing.JTextField height_Section1Input;
+    private javax.swing.JLabel height_Section1Label;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField name_Section1Input;
+    private javax.swing.JLabel name_Section1Label;
+    private javax.swing.JToggleButton notificationButton;
+    private javax.swing.JLabel notificationPreferenceLabel;
+    private javax.swing.JLabel pushNotification_Label;
+    private javax.swing.JCheckBox pushNotification_checkBox;
+    private javax.swing.JLabel smsNotification_Label;
+    private javax.swing.JCheckBox smsNotification_checkBox;
+    private javax.swing.JButton updateButton_Section1;
+    private javax.swing.JTextField weight_Section1Input;
+    private javax.swing.JLabel weight_Section1Label;
     // End of variables declaration//GEN-END:variables
 }

@@ -23,13 +23,217 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="jPanel1">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="steps_Section2Label" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="water_Section2Label" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="calories_Section2Label" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="duration_Section2Label" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="sleep_Section2Label" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="activity_Section2Label" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="sleepQuality_Section2Label" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="sleep_Section2Text" max="32767" attributes="0"/>
+                                      <Component id="duration_Section2Text" max="32767" attributes="0"/>
+                                      <Component id="calories_Section2Text" max="32767" attributes="0"/>
+                                      <Component id="water_Section2Text" max="32767" attributes="0"/>
+                                      <Component id="steps_Section2Text" max="32767" attributes="0"/>
+                                      <Component id="activityType_Section2ComboBox" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="sleepQuality_Section2ComboBox" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="addButton_Section2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="323" max="32767" attributes="0"/>
+                                  <Component id="summaryButton_Section2" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                          <Component id="healthOverviewSection2_Label" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                  <Component id="healthOverviewSection2_Label" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="steps_Section2Label" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="steps_Section2Text" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="water_Section2Label" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="water_Section2Text" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="calories_Section2Label" min="-2" max="-2" attributes="0"/>
+                      <Component id="calories_Section2Text" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="activity_Section2Label" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="duration_Section2Label" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="duration_Section2Text" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="sleep_Section2Label" min="-2" max="-2" attributes="0"/>
+                              <Component id="sleep_Section2Text" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Component id="activityType_Section2ComboBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="sleepQuality_Section2Label" min="-2" max="-2" attributes="0"/>
+                      <Component id="sleepQuality_Section2ComboBox" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="27" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="addButton_Section2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="summaryButton_Section2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="healthOverviewSection2_Label">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Health Overview"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="steps_Section2Label">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Steps:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="water_Section2Label">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Water intake:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="calories_Section2Label">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Calories Intake:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="sleep_Section2Label">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Sleep Hours:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="activity_Section2Label">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Activity type:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="duration_Section2Label">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Duration:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="sleepQuality_Section2Label">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Sleep Quality"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="steps_Section2Text">
+        </Component>
+        <Component class="javax.swing.JTextField" name="water_Section2Text">
+        </Component>
+        <Component class="javax.swing.JTextField" name="calories_Section2Text">
+        </Component>
+        <Component class="javax.swing.JTextField" name="duration_Section2Text">
+        </Component>
+        <Component class="javax.swing.JTextField" name="sleep_Section2Text">
+        </Component>
+        <Component class="javax.swing.JComboBox" name="activityType_Section2ComboBox">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="4">
+                <StringItem index="0" value="Item 1"/>
+                <StringItem index="1" value="Item 2"/>
+                <StringItem index="2" value="Item 3"/>
+                <StringItem index="3" value="Item 4"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="activityType_Section2ComboBoxItemStateChanged"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="sleepQuality_Section2ComboBox">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="4">
+                <StringItem index="0" value="Item 1"/>
+                <StringItem index="1" value="Item 2"/>
+                <StringItem index="2" value="Item 3"/>
+                <StringItem index="3" value="Item 4"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="addButton_Section2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Add"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addButton_Section2ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="summaryButton_Section2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Summary"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
 </Form>
