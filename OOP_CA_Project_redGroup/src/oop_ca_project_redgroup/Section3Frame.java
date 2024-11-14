@@ -26,17 +26,44 @@ public class Section3Frame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        report_Section3Label = new javax.swing.JLabel();
+        viewProgressButton_Section3 = new javax.swing.JButton();
+        generateReportButton_Section3 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        report_Section3Label.setText("Report");
+
+        viewProgressButton_Section3.setText("View Progress");
+
+        generateReportButton_Section3.setText("Generate Report");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(report_Section3Label))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(generateReportButton_Section3)
+                            .addComponent(viewProgressButton_Section3))))
+                .addContainerGap(245, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(report_Section3Label)
+                .addGap(32, 32, 32)
+                .addComponent(viewProgressButton_Section3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(generateReportButton_Section3)
+                .addContainerGap(157, Short.MAX_VALUE))
         );
 
         pack();
@@ -78,5 +105,8 @@ public class Section3Frame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton generateReportButton_Section3;
+    private javax.swing.JLabel report_Section3Label;
+    private javax.swing.JButton viewProgressButton_Section3;
     // End of variables declaration//GEN-END:variables
 }
