@@ -44,6 +44,7 @@ public class Section2Frame extends javax.swing.JFrame {
         sleepQuality_Section2ComboBox = new javax.swing.JComboBox<>();
         addButton_Section2 = new javax.swing.JButton();
         summaryButton_Section2 = new javax.swing.JButton();
+        homeButtonSection2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,37 +82,49 @@ public class Section2Frame extends javax.swing.JFrame {
 
         summaryButton_Section2.setText("Summary");
 
+        homeButtonSection2.setText("Home");
+        homeButtonSection2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeButtonSection2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(homeButtonSection2)
+                        .addGap(465, 465, 465))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(addButton_Section2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(summaryButton_Section2)
+                        .addGap(56, 56, 56))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(steps_Section2Label)
-                                    .addComponent(water_Section2Label)
-                                    .addComponent(calories_Section2Label)
-                                    .addComponent(duration_Section2Label)
-                                    .addComponent(sleep_Section2Label)
-                                    .addComponent(activity_Section2Label)
-                                    .addComponent(sleepQuality_Section2Label))
-                                .addGap(25, 25, 25)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(sleep_Section2Text)
-                                    .addComponent(duration_Section2Text)
-                                    .addComponent(calories_Section2Text)
-                                    .addComponent(water_Section2Text)
-                                    .addComponent(steps_Section2Text)
-                                    .addComponent(activityType_Section2ComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(sleepQuality_Section2ComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(addButton_Section2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 323, Short.MAX_VALUE)
-                                .addComponent(summaryButton_Section2))))
+                            .addComponent(steps_Section2Label)
+                            .addComponent(water_Section2Label)
+                            .addComponent(calories_Section2Label)
+                            .addComponent(duration_Section2Label)
+                            .addComponent(sleep_Section2Label)
+                            .addComponent(activity_Section2Label)
+                            .addComponent(sleepQuality_Section2Label))
+                        .addGap(25, 25, 25)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(sleep_Section2Text)
+                            .addComponent(duration_Section2Text)
+                            .addComponent(calories_Section2Text)
+                            .addComponent(water_Section2Text)
+                            .addComponent(steps_Section2Text)
+                            .addComponent(activityType_Section2ComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(sleepQuality_Section2ComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addComponent(healthOverviewSection2_Label)))
@@ -151,11 +164,13 @@ public class Section2Frame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(sleepQuality_Section2Label)
                     .addComponent(sleepQuality_Section2ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addButton_Section2)
                     .addComponent(summaryButton_Section2))
-                .addGap(31, 31, 31))
+                .addGap(12, 12, 12)
+                .addComponent(homeButtonSection2)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -182,6 +197,11 @@ public class Section2Frame extends javax.swing.JFrame {
     private void addButton_Section2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButton_Section2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_addButton_Section2ActionPerformed
+
+    private void homeButtonSection2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonSection2ActionPerformed
+        new RedGroup_LandingPageGUI().setVisible(true); 
+        this.dispose(); 
+    }//GEN-LAST:event_homeButtonSection2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,6 +247,7 @@ public class Section2Frame extends javax.swing.JFrame {
     private javax.swing.JLabel duration_Section2Label;
     private javax.swing.JTextField duration_Section2Text;
     private javax.swing.JLabel healthOverviewSection2_Label;
+    private javax.swing.JButton homeButtonSection2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<String> sleepQuality_Section2ComboBox;
     private javax.swing.JLabel sleepQuality_Section2Label;
