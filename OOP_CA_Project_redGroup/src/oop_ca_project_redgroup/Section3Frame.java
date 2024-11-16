@@ -29,6 +29,7 @@ public class Section3Frame extends javax.swing.JFrame {
         report_Section3Label = new javax.swing.JLabel();
         viewProgressButton_Section3 = new javax.swing.JButton();
         generateReportButton_Section3 = new javax.swing.JButton();
+        homeButtonSection3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -37,6 +38,13 @@ public class Section3Frame extends javax.swing.JFrame {
         viewProgressButton_Section3.setText("View Progress");
 
         generateReportButton_Section3.setText("Generate Report");
+
+        homeButtonSection3.setText("Home");
+        homeButtonSection3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeButtonSection3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -51,7 +59,8 @@ public class Section3Frame extends javax.swing.JFrame {
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(generateReportButton_Section3)
-                            .addComponent(viewProgressButton_Section3))))
+                            .addComponent(viewProgressButton_Section3)
+                            .addComponent(homeButtonSection3))))
                 .addContainerGap(245, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -61,13 +70,20 @@ public class Section3Frame extends javax.swing.JFrame {
                 .addComponent(report_Section3Label)
                 .addGap(32, 32, 32)
                 .addComponent(viewProgressButton_Section3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(53, 53, 53)
                 .addComponent(generateReportButton_Section3)
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                .addComponent(homeButtonSection3)
+                .addGap(17, 17, 17))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void homeButtonSection3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonSection3ActionPerformed
+        new RedGroup_LandingPageGUI().setVisible(true); 
+        this.dispose(); 
+    }//GEN-LAST:event_homeButtonSection3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -106,6 +122,7 @@ public class Section3Frame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton generateReportButton_Section3;
+    private javax.swing.JButton homeButtonSection3;
     private javax.swing.JLabel report_Section3Label;
     private javax.swing.JButton viewProgressButton_Section3;
     // End of variables declaration//GEN-END:variables

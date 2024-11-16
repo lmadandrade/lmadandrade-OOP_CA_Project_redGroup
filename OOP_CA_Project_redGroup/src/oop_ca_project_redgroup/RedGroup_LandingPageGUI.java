@@ -53,6 +53,11 @@ public class RedGroup_LandingPageGUI extends javax.swing.JFrame {
         });
 
         Section3_landingPageButton.setText("Section 3 - Report");
+        Section3_landingPageButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Section3_landingPageButtonActionPerformed(evt);
+            }
+        });
 
         dailyTips_landingPageButton.setText("Daily Tips");
 
@@ -63,32 +68,30 @@ public class RedGroup_LandingPageGUI extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(166, 166, 166)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(214, 214, 214)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Section3_landingPageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(titleLandingPage)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(Section2_landingPageButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-                                .addComponent(Section1_landingPageButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(124, 124, 124)
-                        .addComponent(dailyTips_landingPageButton)
-                        .addGap(212, 212, 212)
-                        .addComponent(reminder_landingPageButton)))
-                .addContainerGap(279, Short.MAX_VALUE))
+                    .addComponent(Section1_landingPageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(titleLandingPage)
+                    .addComponent(Section2_landingPageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Section3_landingPageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(222, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(dailyTips_landingPageButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(reminder_landingPageButton)
+                .addGap(94, 94, 94))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addGap(49, 49, 49)
                 .addComponent(titleLandingPage)
-                .addGap(53, 53, 53)
+                .addGap(56, 56, 56)
                 .addComponent(Section1_landingPageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Section2_landingPageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Section3_landingPageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -116,12 +119,19 @@ public class RedGroup_LandingPageGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Section1_landingPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Section1_landingPageButtonActionPerformed
-        // TODO add your handling code here:
+        new Section1Frame().setVisible(true); 
+        this.dispose(); 
     }//GEN-LAST:event_Section1_landingPageButtonActionPerformed
 
     private void Section2_landingPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Section2_landingPageButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Section2_landingPageButtonActionPerformed
+        new Section2Frame().setVisible(true); 
+        this.dispose(); 
+     }//GEN-LAST:event_Section2_landingPageButtonActionPerformed
+
+    private void Section3_landingPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Section3_landingPageButtonActionPerformed
+        new Section3Frame().setVisible(true); 
+        this.dispose(); 
+    }//GEN-LAST:event_Section3_landingPageButtonActionPerformed
 
     /**
      * @param args the command line arguments
