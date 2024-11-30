@@ -23,7 +23,7 @@ public class Section2FrameSummary extends javax.swing.JFrame {
 ) {
     initComponents();
 
-// Use String.format to limit decimal places to 2
+    // Use String.format to limit decimal places to 2
     stepsAvg.setText("Average Steps: " + (avgSteps > 0 ? String.format("%.2f", avgSteps) : "No Data"));
     waterAvg.setText("Average Water Intake: " + (avgWater > 0 ? String.format("%.2f", avgWater) + " L" : "No Data"));
     caloriesAvg.setText("Average Calories: " + (avgCalories > 0 ? String.format("%.2f", avgCalories) : "No Data"));

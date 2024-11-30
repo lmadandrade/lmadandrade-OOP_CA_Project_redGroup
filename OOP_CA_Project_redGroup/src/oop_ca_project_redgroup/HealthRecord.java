@@ -5,7 +5,10 @@
 package oop_ca_project_redgroup;
 
 /**
- *
+ * This class represents a health record that stores details about daily activities, 
+ * sleep, and health related metrics
+ * 
+ * 
  * @author lucasandrade
  */
 
@@ -20,6 +23,7 @@ public class HealthRecord {
     private String sleepQuality;
     private String timestamp;
 
+    // Constructor
     public HealthRecord(int steps, double waterIntake, double calories, String activityType, double duration, double sleepHours, String sleepQuality, String timestamp) {
         this.steps = steps;
         this.waterIntake = waterIntake;
@@ -59,6 +63,7 @@ public class HealthRecord {
         return sleepQuality;
     }
 
+    // Converts the health record into a string for display
     @Override
     public String toString() {
         return String.format("Date: %s\nSteps: %d\nWater Intake: %.2f L\nCalories: %.2f\nActivity: %s\nDuration: %.2f hours\nSleep Hours: %.2f\nSleep Quality: %s",

@@ -22,12 +22,12 @@ public class HealthDataDB {
     private Connection healthDBConnection;
 
     /**
-     * Opens a connection to the database.
-     * Use your database name, username, and password.
+     * This opens a connection to the DB.
+     * 
      */
    public void getConnection() {
     try {
-        // Establish connection to the database
+        // connection to the database
         healthDBConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/DBhealthApp", "root", "password");
         System.out.println("Connection successful.");
     } catch (SQLException ex) {
@@ -38,7 +38,7 @@ public class HealthDataDB {
 
 
     /**
-     * Adds a new health record to the database.
+     * This adds a new health record to the database.
      */
   public void addHealthData(HealthRecord record) {
     String sql = "INSERT INTO health_data (steps, water, calories, activity_type, duration, sleep_hours, sleep_quality, timestamp) "
@@ -60,7 +60,7 @@ public class HealthDataDB {
 
 
     /**
-     * Retrieves all health records from the database as a list of HealthRecord objects.
+     * get all health records from the database as a list of HealthRecord
      * @return ArrayList of HealthRecord objects
      */
     public ArrayList<HealthRecord> getAllHealthData() {
@@ -88,7 +88,7 @@ public class HealthDataDB {
     }
 
     /**
-     * Retrieves all health data as a string for displaying on the GUI.
+     * Retrieves all health data as a string for displaying on the GUI
      * @return Formatted string of all health records.
      */
     public String getAllHealthDataAsString() {
@@ -124,91 +124,91 @@ public class HealthDataDB {
     } catch (SQLException e) {
         System.err.println("Error calculating average steps: " + e.getMessage());
     }
-    return 0; // Default value if no data or error occurs
+    return 0; // Default value if no data 
 }
 
-// Method to calculate average water intake
-public double getAverageWaterIntake() {
-    String sql = "SELECT AVG(water) AS avgWater FROM health_data";
-    try (Statement stmt = healthDBConnection.createStatement();
-         ResultSet rs = stmt.executeQuery(sql)) {
-        if (rs.next()) {
-            return rs.getDouble("avgWater");
+    // Method to calculate avg water intake
+    public double getAverageWaterIntake() {
+        String sql = "SELECT AVG(water) AS avgWater FROM health_data";
+        try (Statement stmt = healthDBConnection.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            if (rs.next()) {
+                return rs.getDouble("avgWater");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error calculating average water intake: " + e.getMessage());
         }
-    } catch (SQLException e) {
-        System.err.println("Error calculating average water intake: " + e.getMessage());
+        return 0;
     }
-    return 0;
-}
 
-// Method to calculate average calories
-public double getAverageCalories() {
-    String sql = "SELECT AVG(calories) AS avgCalories FROM health_data";
-    try (Statement stmt = healthDBConnection.createStatement();
-         ResultSet rs = stmt.executeQuery(sql)) {
-        if (rs.next()) {
-            return rs.getDouble("avgCalories");
+    // Method to calculate avg calories
+    public double getAverageCalories() {
+        String sql = "SELECT AVG(calories) AS avgCalories FROM health_data";
+        try (Statement stmt = healthDBConnection.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            if (rs.next()) {
+                return rs.getDouble("avgCalories");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error calculating average calories: " + e.getMessage());
         }
-    } catch (SQLException e) {
-        System.err.println("Error calculating average calories: " + e.getMessage());
+        return 0;
     }
-    return 0;
-}
 
-// Method to find the most frequent activity type
-public String getMostFrequentActivityType() {
-    String sql = "SELECT activity_type, COUNT(activity_type) AS count FROM health_data GROUP BY activity_type ORDER BY count DESC LIMIT 1";
-    try (Statement stmt = healthDBConnection.createStatement();
-         ResultSet rs = stmt.executeQuery(sql)) {
-        if (rs.next()) {
-            return rs.getString("activity_type");
+    // Method to find the most frequent activity type
+    public String getMostFrequentActivityType() {
+        String sql = "SELECT activity_type, COUNT(activity_type) AS count FROM health_data GROUP BY activity_type ORDER BY count DESC LIMIT 1";
+        try (Statement stmt = healthDBConnection.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            if (rs.next()) {
+                return rs.getString("activity_type");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error finding most frequent activity type: " + e.getMessage());
         }
-    } catch (SQLException e) {
-        System.err.println("Error finding most frequent activity type: " + e.getMessage());
+        return "N/A";
     }
-    return "N/A";
-}
 
-// Method to calculate average duration
-public double getAverageDuration() {
-    String sql = "SELECT AVG(duration) AS avgDuration FROM health_data";
-    try (Statement stmt = healthDBConnection.createStatement();
-         ResultSet rs = stmt.executeQuery(sql)) {
-        if (rs.next()) {
-            return rs.getDouble("avgDuration");
+    // Method to calculate avg duration
+    public double getAverageDuration() {
+        String sql = "SELECT AVG(duration) AS avgDuration FROM health_data";
+        try (Statement stmt = healthDBConnection.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            if (rs.next()) {
+                return rs.getDouble("avgDuration");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error calculating average duration: " + e.getMessage());
         }
-    } catch (SQLException e) {
-        System.err.println("Error calculating average duration: " + e.getMessage());
+        return 0;
     }
-    return 0;
-}
 
-// Method to calculate average sleep hours
-public double getAverageSleepHours() {
-    String sql = "SELECT AVG(sleep_hours) AS avgSleepHours FROM health_data";
-    try (Statement stmt = healthDBConnection.createStatement();
-         ResultSet rs = stmt.executeQuery(sql)) {
-        if (rs.next()) {
-            return rs.getDouble("avgSleepHours");
+    // Method to calculate avg sleep hours
+    public double getAverageSleepHours() {
+        String sql = "SELECT AVG(sleep_hours) AS avgSleepHours FROM health_data";
+        try (Statement stmt = healthDBConnection.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            if (rs.next()) {
+                return rs.getDouble("avgSleepHours");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error calculating average sleep hours: " + e.getMessage());
         }
-    } catch (SQLException e) {
-        System.err.println("Error calculating average sleep hours: " + e.getMessage());
+        return 0;
     }
-    return 0;
-}
 
-// Method to find the most frequent sleep quality
-public String getMostFrequentSleepQuality() {
-    String sql = "SELECT sleep_quality, COUNT(sleep_quality) AS count FROM health_data GROUP BY sleep_quality ORDER BY count DESC LIMIT 1";
-    try (Statement stmt = healthDBConnection.createStatement();
-         ResultSet rs = stmt.executeQuery(sql)) {
-        if (rs.next()) {
-            return rs.getString("sleep_quality");
+    // Method to find the most frequent sleep quality
+    public String getMostFrequentSleepQuality() {
+        String sql = "SELECT sleep_quality, COUNT(sleep_quality) AS count FROM health_data GROUP BY sleep_quality ORDER BY count DESC LIMIT 1";
+        try (Statement stmt = healthDBConnection.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            if (rs.next()) {
+                return rs.getString("sleep_quality");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error finding most frequent sleep quality: " + e.getMessage());
         }
-    } catch (SQLException e) {
-        System.err.println("Error finding most frequent sleep quality: " + e.getMessage());
+        return "N/A";
     }
-    return "N/A";
-}
 }
 

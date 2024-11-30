@@ -12,35 +12,31 @@ package oop_ca_project_redgroup;
  */
 public class Section2Frame extends javax.swing.JFrame {
 
-    // Instance of HealthDataDB for database operations
+    // Instance of HealthDataDB
     private HealthDataDB db;
     
     /**
      * Creates new form Section2Frame
      */
     public Section2Frame() {
-        initComponents(); // Initializes the UI components
-        db = new HealthDataDB(); // Initialize the database connection
-        db.getConnection(); // Connect to the database
+        initComponents(); 
+        db = new HealthDataDB(); // init the DB
+        db.getConnection(); // Connect to the DB
 
-        // Add placeholders to text fields
+        // placeholders to the fields
         addPlaceholder(steps_Section2Text, "Enter steps (e.g., 10000)");
         addPlaceholder(water_Section2Text, "Enter water intake (e.g., 2.5)");
         addPlaceholder(calories_Section2Text, "Enter calories (e.g., 2000)");
         addPlaceholder(duration_Section2Text, "Enter duration (e.g., 1.5)");
         addPlaceholder(sleep_Section2Text, "Enter sleep hours (e.g., 7.5)");
 
-        // Set default values for ComboBoxes
+        // Set values for the dropdown list
         activityType_Section2ComboBox.setModel(
             new javax.swing.DefaultComboBoxModel<>(new String[]{"Select an activity", "Walking", "Running", "Cycling", "Swimming"}));
         sleepQuality_Section2ComboBox.setModel(
             new javax.swing.DefaultComboBoxModel<>(new String[]{"Select sleep quality", "Poor", "Fair", "Good", "Excellent"}));
 
-        // Ensure the default placeholder cannot be selected again
-        activityType_Section2ComboBox.setSelectedIndex(0);
-        sleepQuality_Section2ComboBox.setSelectedIndex(0);
-
-        // Add a WindowListener for proper cleanup
+        // windowListener for cleanup when app terminates
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent e) {
@@ -50,7 +46,7 @@ public class Section2Frame extends javax.swing.JFrame {
         });
     }
 
-    // Utility method to add placeholders
+    // method to add placeholders
     private void addPlaceholder(javax.swing.JTextField field, String placeholder) {
         field.setText(placeholder);
         field.setForeground(java.awt.Color.GRAY);
@@ -262,10 +258,8 @@ public class Section2Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_activityType_Section2ComboBoxItemStateChanged
 
     private void addButton_Section2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButton_Section2ActionPerformed
-        // TODO add your handling code here:
-        
-         
-        // Validate if placeholders are still present in the fields
+     
+        // Check if placeholders are still present in the fields
         if (steps_Section2Text.getText().equals("Enter steps (e.g., 10000)") ||
             water_Section2Text.getText().equals("Enter water intake (e.g., 2.5 L)") ||
             calories_Section2Text.getText().equals("Enter calories (e.g., 2000)") ||
@@ -274,36 +268,37 @@ public class Section2Frame extends javax.swing.JFrame {
 
             // Show error if placeholders are not replaced
             javax.swing.JOptionPane.showMessageDialog(this, "Please enter valid data in all fields!", "Input Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-            return; // Stop further execution
+            return; 
         }
         try {
-        // Parse user input
-        int steps = Integer.parseInt(steps_Section2Text.getText());
-        double water = Double.parseDouble(water_Section2Text.getText());
-        double calories = Double.parseDouble(calories_Section2Text.getText());
-        String activityType = activityType_Section2ComboBox.getSelectedItem().toString();
-        double duration = Double.parseDouble(duration_Section2Text.getText());
-        double sleepHours = Double.parseDouble(sleep_Section2Text.getText());
-        String sleepQuality = sleepQuality_Section2ComboBox.getSelectedItem().toString();
+            // user input into parse
+            int steps = Integer.parseInt(steps_Section2Text.getText());
+            double water = Double.parseDouble(water_Section2Text.getText());
+            double calories = Double.parseDouble(calories_Section2Text.getText());
+            String activityType = activityType_Section2ComboBox.getSelectedItem().toString();
+            double duration = Double.parseDouble(duration_Section2Text.getText());
+            double sleepHours = Double.parseDouble(sleep_Section2Text.getText());
+            String sleepQuality = sleepQuality_Section2ComboBox.getSelectedItem().toString();
 
-        // Create and add HealthRecord to database
-        HealthRecord record = new HealthRecord(steps, water, calories, activityType, duration, sleepHours, sleepQuality, null);
-        db.addHealthData(record);
+            // create and add HealthRecord to database
+            HealthRecord record = new HealthRecord(steps, water, calories, activityType, duration, sleepHours, sleepQuality, null);
+            db.addHealthData(record);
 
 
-    // Show success message in the label
-        addLabel_Section2.setText("Data added successfully! Check summary for an overview.");
-        addLabel_Section2.setForeground(java.awt.Color.GREEN); // Optional: make the text green for success
-    } catch (NumberFormatException e) {
-            // Handle invalid input (e.g., text in numeric fields)
+            // Show message in the label is inout is valid
+            addLabel_Section2.setText("Data added successfully! Check summary for an overview.");
+            addLabel_Section2.setForeground(java.awt.Color.GREEN); // color into the message
+            } catch (NumberFormatException e) {
+            // invalid input
             addLabel_Section2.setText("Please enter valid numeric data!");
             addLabel_Section2.setForeground(java.awt.Color.RED);
-        } 
-        addPlaceholder(steps_Section2Text, "Enter steps (e.g., 10000)");
-        addPlaceholder(water_Section2Text, "Enter water intake (e.g., 2.5 L)");
-        addPlaceholder(calories_Section2Text, "Enter calories (e.g., 2000)");
-        addPlaceholder(duration_Section2Text, "Enter duration (e.g., 1.5 hours)");
-        addPlaceholder(sleep_Section2Text, "Enter sleep hours (e.g., 7.5)");
+            } 
+        
+            addPlaceholder(steps_Section2Text, "Enter steps (e.g., 10000)");
+            addPlaceholder(water_Section2Text, "Enter water intake (e.g., 2.5 L)");
+            addPlaceholder(calories_Section2Text, "Enter calories (e.g., 2000)");
+            addPlaceholder(duration_Section2Text, "Enter duration (e.g., 1.5 hours)");
+            addPlaceholder(sleep_Section2Text, "Enter sleep hours (e.g., 7.5)");
 
     }//GEN-LAST:event_addButton_Section2ActionPerformed
 
@@ -313,24 +308,23 @@ public class Section2Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_homeButtonSection2ActionPerformed
 
     private void summaryButton_Section2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_summaryButton_Section2ActionPerformed
-            // Retrieve averages from the database
-    double avgSteps = db.getAverageSteps();
-    double avgWater = db.getAverageWaterIntake();
-    double avgCalories = db.getAverageCalories();
-    String mostFrequentActivity = db.getMostFrequentActivityType();
-    double avgDuration = db.getAverageDuration();
-    double avgSleepHours = db.getAverageSleepHours();
-    String mostFrequentSleepQuality = db.getMostFrequentSleepQuality();
+        // get averages from the database
+        double avgSteps = db.getAverageSteps();
+        double avgWater = db.getAverageWaterIntake();
+        double avgCalories = db.getAverageCalories();
+        String mostFrequentActivity = db.getMostFrequentActivityType();
+        double avgDuration = db.getAverageDuration();
+        double avgSleepHours = db.getAverageSleepHours();
+        String mostFrequentSleepQuality = db.getMostFrequentSleepQuality();
 
-    // Open the summary frame and pass the calculated values
+    // pass the calculated avg
     Section2FrameSummary summaryFrame = new Section2FrameSummary(
         avgSteps, avgWater, avgCalories, 
         mostFrequentActivity, avgDuration, 
-        avgSleepHours, mostFrequentSleepQuality
-    );
+        avgSleepHours, mostFrequentSleepQuality);
 
-    summaryFrame.setVisible(true); // Display the summary frame
-    this.dispose(); // Close the current frame
+    summaryFrame.setVisible(true);
+    this.dispose(); 
 
            
     }//GEN-LAST:event_summaryButton_Section2ActionPerformed
