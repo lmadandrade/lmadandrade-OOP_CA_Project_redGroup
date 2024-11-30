@@ -2,20 +2,28 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package oop_ca_project_redgroup;
+   package oop_ca_project_redgroup;
 
-/**
- *
- * @author lucasandrade
- */
+    import javax.swing.*;
+    import java.awt.event.ActionEvent;
+    import java.awt.event.ActionListener;
+    import java.util.ArrayList;
+
 public class Section3Frame extends javax.swing.JFrame {
+    private ArrayList<UserS3> users = null;
+    private ArrayList<HealthDetailsS3> healthRecords = null;
 
     /**
      * Creates new form Section3Frame
      */
     public Section3Frame() {
         initComponents();
+    users = new ArrayList<>();
+    healthRecords = new ArrayList<>();
+    users.add(new UserS3("John Doe", 30, 70.0, 1.75, "Moderate", "Lose Weight"));
+    healthRecords.add(new HealthDetailsS3(10000, 2000, 2000, "Running", 60, 8, "Good"));
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,14 +38,26 @@ public class Section3Frame extends javax.swing.JFrame {
         viewProgressButton_Section3 = new javax.swing.JButton();
         generateReportButton_Section3 = new javax.swing.JButton();
         homeButtonSection3 = new javax.swing.JButton();
+        ScrollPane1_Section3 = new javax.swing.JScrollPane();
+        TextArea1Section3 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         report_Section3Label.setText("Report");
 
         viewProgressButton_Section3.setText("View Progress");
+        viewProgressButton_Section3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewProgressButton_Section3ActionPerformed(evt);
+            }
+        });
 
         generateReportButton_Section3.setText("Generate Report");
+        generateReportButton_Section3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generateReportButton_Section3ActionPerformed(evt);
+            }
+        });
 
         homeButtonSection3.setText("Home");
         homeButtonSection3.addActionListener(new java.awt.event.ActionListener() {
@@ -45,6 +65,10 @@ public class Section3Frame extends javax.swing.JFrame {
                 homeButtonSection3ActionPerformed(evt);
             }
         });
+
+        TextArea1Section3.setColumns(20);
+        TextArea1Section3.setRows(5);
+        ScrollPane1_Section3.setViewportView(TextArea1Section3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -58,23 +82,31 @@ public class Section3Frame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(homeButtonSection3)
                             .addComponent(generateReportButton_Section3)
-                            .addComponent(viewProgressButton_Section3)
-                            .addComponent(homeButtonSection3))))
-                .addContainerGap(245, Short.MAX_VALUE))
+                            .addComponent(viewProgressButton_Section3))
+                        .addGap(18, 18, 18)
+                        .addComponent(ScrollPane1_Section3, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(report_Section3Label)
-                .addGap(32, 32, 32)
-                .addComponent(viewProgressButton_Section3)
-                .addGap(53, 53, 53)
-                .addComponent(generateReportButton_Section3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
-                .addComponent(homeButtonSection3)
-                .addGap(17, 17, 17))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(viewProgressButton_Section3)
+                        .addGap(53, 53, 53)
+                        .addComponent(generateReportButton_Section3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                        .addComponent(homeButtonSection3)
+                        .addGap(17, 17, 17))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(ScrollPane1_Section3)
+                        .addContainerGap())))
         );
 
         pack();
@@ -84,6 +116,53 @@ public class Section3Frame extends javax.swing.JFrame {
         new RedGroup_LandingPageGUI().setVisible(true); 
         this.dispose(); 
     }//GEN-LAST:event_homeButtonSection3ActionPerformed
+
+    private void viewProgressButton_Section3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewProgressButton_Section3ActionPerformed
+    StringBuilder output = new StringBuilder();
+
+    // Fetch and append user details
+    for (UserS3 user : users) {
+        output.append(user.getUserDetails()).append("\n");
+    }
+
+    // Fetch and append health details
+    for (HealthDetailsS3 record : healthRecords) {
+        output.append(record.getHealthDetails()).append("\n");
+    }
+
+    // Display data in the output area
+    TextArea1Section3.setText(output.toString());
+
+    }//GEN-LAST:event_viewProgressButton_Section3ActionPerformed
+
+    private void generateReportButton_Section3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateReportButton_Section3ActionPerformed
+     StringBuilder report = new StringBuilder("===== REPORT =====\n");
+    
+    // Fetch and append user details
+    for (UserS3 user : users) {
+        report.append(user.getUserDetails()).append("\n");
+    }
+    
+    // Fetch and append health details
+    for (HealthDetailsS3 record : healthRecords) {
+        report.append(record.getHealthDetails()).append("\n");
+    }
+    
+    // Display the report in a dialog box
+    JOptionPane.showMessageDialog(this, report.toString());
+
+    }                                                             
+
+    private String getUserDetailsFromSection1() {
+    return "Name: John Doe\nAge: 30\nWeight: 70kg\nHeight: 1.75m\nActivity Level: Moderate\nGoals: Lose Weight\n";
+}
+
+    private String getHealthDetailsFromSection2() {
+    return "Steps: 10000\nWater Intake: 2000ml\nCalories Intake: 2000\nActivity Type: Running\n" +
+           "Duration: 60 mins\nSleep Hours: 8\nSleep Quality: Good\n";
+
+
+    }//GEN-LAST:event_generateReportButton_Section3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,7 +199,11 @@ public class Section3Frame extends javax.swing.JFrame {
         });
     }
 
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane ScrollPane1_Section3;
+    private javax.swing.JTextArea TextArea1Section3;
     private javax.swing.JButton generateReportButton_Section3;
     private javax.swing.JButton homeButtonSection3;
     private javax.swing.JLabel report_Section3Label;
