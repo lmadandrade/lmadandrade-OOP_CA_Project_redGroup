@@ -156,17 +156,17 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="emailNotification_Label" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="emailNotification_checkBox" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="pushNotification_Label" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="pushNotification_checkBox" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="smsNotification_Label" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="smsNotification_checkBox" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
