@@ -210,5 +210,50 @@ public class HealthDataDB {
         }
         return "N/A";
     }
+    
+    public ArrayList<HealthRecord> getHealthDataByTimeframe(String timeframe) {
+        ArrayList<HealthRecord> healthRecords = new ArrayList<>();
+        String sql = "";
+
+        // SQL query based on the timeframe
+        switch (timeframe) {
+            case "Today":
+                sql = "SELECT * FROM health_data WHERE DATE(timestamp) = CURDATE()";
+                break;
+            case "Past 7 Days":
+                sql = "SELECT * FROM health_data WHERE DATE(timestamp) >= CURDATE() - INTERVAL 7 DAY";
+                break;
+            case "Past 30 Days":
+                sql = "SELECT * FROM health_data WHERE DATE(timestamp) >= CURDATE() - INTERVAL 30 DAY";
+                break;
+            case "All Time":
+            default:
+                sql = "SELECT * FROM health_data";
+                break;
+        }
+
+        // Execute the query and populate health records
+        try (Statement stmt = healthDBConnection.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                HealthRecord record = new HealthRecord(
+                    rs.getInt("steps"),
+                    rs.getDouble("water"),
+                    rs.getDouble("calories"),
+                    rs.getString("activity_type"),
+                    rs.getDouble("duration"),
+                    rs.getDouble("sleep_hours"),
+                    rs.getString("sleep_quality"),
+                    rs.getString("timestamp")
+                );
+                healthRecords.add(record);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error retrieving data: " + e.getMessage());
+        }
+
+        return healthRecords;
+    }
 }
+
 

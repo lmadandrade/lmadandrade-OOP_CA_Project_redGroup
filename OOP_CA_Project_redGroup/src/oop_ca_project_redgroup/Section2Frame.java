@@ -123,6 +123,11 @@ public class Section2Frame extends javax.swing.JFrame {
                 activityType_Section2ComboBoxItemStateChanged(evt);
             }
         });
+        activityType_Section2ComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                activityType_Section2ComboBoxActionPerformed(evt);
+            }
+        });
 
         sleepQuality_Section2ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -328,6 +333,10 @@ public class Section2Frame extends javax.swing.JFrame {
 
            
     }//GEN-LAST:event_summaryButton_Section2ActionPerformed
+
+    private void activityType_Section2ComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_activityType_Section2ComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_activityType_Section2ComboBoxActionPerformed
 
     /**
      * @param args the command line arguments

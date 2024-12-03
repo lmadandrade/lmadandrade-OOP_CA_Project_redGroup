@@ -50,16 +50,20 @@
                       <Component id="sleepQualityAvg" min="-2" max="-2" attributes="0"/>
                       <Component id="sleepAvg" min="-2" max="-2" attributes="0"/>
                       <Component id="durationAvg" min="-2" max="-2" attributes="0"/>
-                      <Component id="favActivityType" min="-2" max="-2" attributes="0"/>
-                      <Component id="caloriesAvg" min="-2" max="-2" attributes="0"/>
-                      <Component id="waterAvg" min="-2" max="-2" attributes="0"/>
-                      <Component id="stepsAvg" min="-2" max="-2" attributes="0"/>
-                      <Component id="healthSummaryLabel" min="-2" max="-2" attributes="0"/>
+                      <Component id="favActivityType" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="caloriesAvg" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="waterAvg" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="stepsAvg" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="healthSummaryLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
+                          <Component id="summaryTimeframeSelector" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="294" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="227" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="backButtonSection2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="206" max="-2" attributes="0"/>
               </Group>
@@ -68,9 +72,12 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="healthSummaryLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="summaryTimeframeSelector" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                  <Component id="healthSummaryLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   <Component id="stepsAvg" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="waterAvg" min="-2" max="-2" attributes="0"/>
@@ -139,6 +146,24 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backButtonSection2ActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="summaryTimeframeSelector">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="4">
+                <StringItem index="0" value="Today"/>
+                <StringItem index="1" value="Past 7 Days"/>
+                <StringItem index="2" value="Past 30 Days"/>
+                <StringItem index="3" value="All Time"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="summaryTimeframeSelectorActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

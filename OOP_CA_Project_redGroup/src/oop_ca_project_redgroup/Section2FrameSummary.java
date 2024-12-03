@@ -4,6 +4,8 @@
  */
 package oop_ca_project_redgroup;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author lucasandrade
@@ -31,6 +33,7 @@ public class Section2FrameSummary extends javax.swing.JFrame {
     durationAvg.setText("Average Duration: " + (avgDuration > 0 ? String.format("%.2f", avgDuration) : "No Data"));
     sleepAvg.setText("Average Sleep Hours: " + (avgSleepHours > 0 ? String.format("%.2f", avgSleepHours) : "No Data"));
     sleepQualityAvg.setText("Most Frequent Sleep Quality: " + (mostFrequentSleepQuality != null && !mostFrequentSleepQuality.isEmpty() ? mostFrequentSleepQuality : "No Data"));
+    
 }
 
     /**
@@ -52,6 +55,7 @@ public class Section2FrameSummary extends javax.swing.JFrame {
         sleepAvg = new javax.swing.JLabel();
         sleepQualityAvg = new javax.swing.JLabel();
         backButtonSection2 = new javax.swing.JButton();
+        summaryTimeframeSelector = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,6 +82,13 @@ public class Section2FrameSummary extends javax.swing.JFrame {
             }
         });
 
+        summaryTimeframeSelector.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Today", "Past 7 Days", "Past 30 Days", "All Time" }));
+        summaryTimeframeSelector.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                summaryTimeframeSelectorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -92,19 +103,24 @@ public class Section2FrameSummary extends javax.swing.JFrame {
                     .addComponent(caloriesAvg)
                     .addComponent(waterAvg)
                     .addComponent(stepsAvg)
-                    .addComponent(healthSummaryLabel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(healthSummaryLabel)
+                        .addGap(95, 95, 95)
+                        .addComponent(summaryTimeframeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(294, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(227, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(backButtonSection2)
                 .addGap(206, 206, 206))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(healthSummaryLabel)
+                    .addComponent(summaryTimeframeSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
-                .addComponent(healthSummaryLabel)
-                .addGap(35, 35, 35)
                 .addComponent(stepsAvg)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(waterAvg)
@@ -147,6 +163,35 @@ public class Section2FrameSummary extends javax.swing.JFrame {
     this.dispose(); // Close the current summary frame
     }//GEN-LAST:event_backButtonSection2ActionPerformed
 
+    private void summaryTimeframeSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_summaryTimeframeSelectorActionPerformed
+            // Fetch the selected timeframe from the dropdown
+        String selectedTimeframe = summaryTimeframeSelector.getSelectedItem().toString();
+
+        // Fetch the filtered data from the database
+        HealthDataDB db = new HealthDataDB();
+        db.getConnection();
+        ArrayList<HealthRecord> records = db.getHealthDataByTimeframe(selectedTimeframe);
+        db.closeConnection();
+
+        // Recalculate and update summary metrics
+        double avgSteps = calculateAverageSteps(records);
+        double avgWater = calculateAverageWater(records);
+        double avgCalories = calculateAverageCalories(records);
+        String mostFrequentActivity = calculateMostFrequentActivity(records);
+        double avgDuration = calculateAverageDuration(records);
+        double avgSleepHours = calculateAverageSleepHours(records);
+        String mostFrequentSleepQuality = calculateMostFrequentSleepQuality(records);
+
+        // Update UI components
+        stepsAvg.setText("Average Steps: " + (avgSteps > 0 ? String.format("%.2f", avgSteps) : "No Data"));
+        waterAvg.setText("Average Water Intake: " + (avgWater > 0 ? String.format("%.2f", avgWater) + " L" : "No Data"));
+        caloriesAvg.setText("Average Calories: " + (avgCalories > 0 ? String.format("%.2f", avgCalories) : "No Data"));
+        favActivityType.setText("Most Frequent Activity: " + (mostFrequentActivity != null && !mostFrequentActivity.isEmpty() ? mostFrequentActivity : "No Data"));
+        durationAvg.setText("Average Duration: " + (avgDuration > 0 ? String.format("%.2f", avgDuration) : "No Data"));
+        sleepAvg.setText("Average Sleep Hours: " + (avgSleepHours > 0 ? String.format("%.2f", avgSleepHours) : "No Data"));
+        sleepQualityAvg.setText("Most Frequent Sleep Quality: " + (mostFrequentSleepQuality != null && !mostFrequentSleepQuality.isEmpty() ? mostFrequentSleepQuality : "No Data"));
+    }//GEN-LAST:event_summaryTimeframeSelectorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -181,6 +226,53 @@ public class Section2FrameSummary extends javax.swing.JFrame {
             }
         });
     }
+    
+            // Helper methods for calculations
+
+        private double calculateAverageSteps(ArrayList<HealthRecord> records) {
+            return records.stream().mapToInt(HealthRecord::getSteps).average().orElse(0);
+        }
+
+        private double calculateAverageWater(ArrayList<HealthRecord> records) {
+            return records.stream().mapToDouble(HealthRecord::getWaterIntake).average().orElse(0);
+        }
+
+        private double calculateAverageCalories(ArrayList<HealthRecord> records) {
+            return records.stream().mapToDouble(HealthRecord::getCalories).average().orElse(0);
+        }
+
+        private String calculateMostFrequentActivity(ArrayList<HealthRecord> records) {
+            return records.stream()
+                .map(HealthRecord::getActivityType)
+                .filter(type -> type != null && !type.isEmpty())
+                .collect(java.util.stream.Collectors.groupingBy(type -> type, java.util.stream.Collectors.counting()))
+                .entrySet()
+                .stream()
+                .max(java.util.Map.Entry.comparingByValue())
+                .map(java.util.Map.Entry::getKey)
+                .orElse("No Data");
+        }
+
+        private double calculateAverageDuration(ArrayList<HealthRecord> records) {
+            return records.stream().mapToDouble(HealthRecord::getDuration).average().orElse(0);
+        }
+
+        private double calculateAverageSleepHours(ArrayList<HealthRecord> records) {
+            return records.stream().mapToDouble(HealthRecord::getSleepHours).average().orElse(0);
+        }
+
+        private String calculateMostFrequentSleepQuality(ArrayList<HealthRecord> records) {
+            return records.stream()
+                .map(HealthRecord::getSleepQuality)
+                .filter(quality -> quality != null && !quality.isEmpty())
+                .collect(java.util.stream.Collectors.groupingBy(quality -> quality, java.util.stream.Collectors.counting()))
+                .entrySet()
+                .stream()
+                .max(java.util.Map.Entry.comparingByValue())
+                .map(java.util.Map.Entry::getKey)
+                .orElse("No Data");
+        }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButtonSection2;
@@ -192,6 +284,7 @@ public class Section2FrameSummary extends javax.swing.JFrame {
     private javax.swing.JLabel sleepAvg;
     private javax.swing.JLabel sleepQualityAvg;
     private javax.swing.JLabel stepsAvg;
+    private javax.swing.JComboBox<String> summaryTimeframeSelector;
     private javax.swing.JLabel waterAvg;
     // End of variables declaration//GEN-END:variables
 }
