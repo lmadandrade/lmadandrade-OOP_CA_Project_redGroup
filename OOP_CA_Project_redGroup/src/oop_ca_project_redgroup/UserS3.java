@@ -4,31 +4,30 @@
  */
 package oop_ca_project_redgroup;
 
-/**
- *
- * @author lucasguimaraes
- */
-class UserS3 {
+public class UserS3 {
     private String name;
     private int age;
     private double weight;
     private double height;
     private String activityLevel;
-    private String goals;
+    private String healthGoal;
 
-    public UserS3(String name, int age, double weight, double height, String activityLevel, String goals) {
+    public UserS3(String name, int age, double weight, double height, String activityLevel, String healthGoal) {
         this.name = name;
         this.age = age;
         this.weight = weight;
         this.height = height;
         this.activityLevel = activityLevel;
-        this.goals = goals;
+        this.healthGoal = healthGoal;
     }
 
-    public String getUserDetails() {
-        return "Name: " + name + "\nAge: " + age + "\nWeight: " + weight + "kg\nHeight: " + height +
-               "m\nActivity Level: " + activityLevel + "\nGoals: " + goals + "\n";
+   public String getDetails() {
+    return "User: " + name + ",\n" +
+           "Age: " + age + ",\n" +
+           "Weight: " + weight + "kg,\n" +
+           "Height: " + height + "m,\n" +
+           "Activity Level: " + activityLevel + ",\n" +
+           "Health Goal: " + healthGoal + "\n";
     }
 
-    
 }

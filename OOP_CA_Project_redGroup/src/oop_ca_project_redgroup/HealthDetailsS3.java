@@ -1,35 +1,57 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package oop_ca_project_redgroup;
+    package oop_ca_project_redgroup;
 
-/**
- *
- * @author lucasguimaraes
- */
-class HealthDetailsS3 {
+    public class HealthDetailsS3 {
     private int steps;
-    private int waterIntake;
-    private int calories;
-    private String activityType;
-    private int duration;
+    private int caloriesIn;
+    private int caloriesOut;
+    private String exerciseType;
+    private int duration; // in minutes
     private int sleepHours;
-    private String sleepQuality;
+    private String overallHealth;
 
-    public HealthDetailsS3(int steps, int waterIntake, int calories, String activityType, int duration, int sleepHours, String sleepQuality) {
+    public HealthDetailsS3(int steps, int caloriesIn, int caloriesOut, String exerciseType, 
+                           int duration, int sleepHours, String overallHealth) {
         this.steps = steps;
-        this.waterIntake = waterIntake;
-        this.calories = calories;
-        this.activityType = activityType;
+        this.caloriesIn = caloriesIn;
+        this.caloriesOut = caloriesOut;
+        this.exerciseType = exerciseType;
         this.duration = duration;
         this.sleepHours = sleepHours;
-        this.sleepQuality = sleepQuality;
+        this.overallHealth = overallHealth;
     }
 
-    public String getHealthDetails() {
-        return "Steps: " + steps + "\nWater Intake: " + waterIntake + "ml\nCalories Intake: " + calories +
-               "\nActivity Type: " + activityType + "\nDuration: " + duration + " mins\nSleep Hours: " +
-               sleepHours + "\nSleep Quality: " + sleepQuality + "\n";
+    public int getSteps() {
+        return steps;
     }
+
+    public int getCaloriesIn() {
+        return caloriesIn;
+    }
+
+    public int getCaloriesOut() {
+        return caloriesOut;
+    }
+
+    public int getSleepHours() {
+        return sleepHours;
+    }
+
+    public String getExerciseType() {
+        return exerciseType;
+    }
+
+   public String getDetails() {
+    return "Steps: " + steps + "\n" +
+           "Calories In: " + caloriesIn + "\n" +
+           "Calories Out: " + caloriesOut + "\n" +
+           "Exercise Type: " + exerciseType + "\n" +
+           "Duration: " + duration + " mins\n" +
+           "Sleep Hours: " + sleepHours + "\n" +
+           "Overall Health: " + overallHealth + "\n";
+}
+
 }

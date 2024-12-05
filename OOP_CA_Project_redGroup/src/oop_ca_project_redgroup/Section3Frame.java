@@ -7,22 +7,124 @@
     import javax.swing.*;
     import java.awt.event.ActionEvent;
     import java.awt.event.ActionListener;
+    import java.io.FileWriter;
+    import java.io.IOException;
+    import java.io.PrintWriter;
     import java.util.ArrayList;
 
-public class Section3Frame extends javax.swing.JFrame {
-    private ArrayList<UserS3> users = null;
-    private ArrayList<HealthDetailsS3> healthRecords = null;
+    public class Section3Frame extends javax.swing.JFrame {
+    private ArrayList<Object> records = null; // Unified list for polymorphism
+
 
     /**
      * Creates new form Section3Frame
      */
     public Section3Frame() {
         initComponents();
-    users = new ArrayList<>();
-    healthRecords = new ArrayList<>();
-    users.add(new UserS3("John Doe", 30, 70.0, 1.75, "Moderate", "Lose Weight"));
-    healthRecords.add(new HealthDetailsS3(10000, 2000, 2000, "Running", 60, 8, "Good"));
+    records = new ArrayList<>();
+    records.add(new UserS3("John Doe", 30, 70.0, 1.75, "Moderate", "Lose Weight"));
+    records.add(new HealthDetailsS3(10000, 2000, 2000, "Running", 60, 8, "Good"));
+}
+
+    private void saveReportToFile(String filename, String report) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
+            writer.write(report);
+            JOptionPane.showMessageDialog(this, "Report saved successfully to " + filename);
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error saving report: " + e.getMessage());
+        }
     }
+    
+    private String generateUniqueFilename(String baseName, String extension) {
+    int version = 2; // Start with version 2
+    String filename = baseName + extension;
+    
+    // Check if the file exists, and if it does, append a version number
+    while (new java.io.File(filename).exists()) {
+        filename = baseName + "_v" + version + extension;
+        version++;
+    }
+    
+    return filename;
+}
+    
+    private String generateStatisticalSummary() {
+    int totalSteps = 0, totalCaloriesIn = 0, totalCaloriesOut = 0, totalSleep = 0, healthRecordCount = 0;
+
+    for (Object record : records) {
+        if (record instanceof HealthDetailsS3) {
+            HealthDetailsS3 healthRecord = (HealthDetailsS3) record;
+            totalSteps += healthRecord.getSteps();
+            totalCaloriesIn += healthRecord.getCaloriesIn();
+            totalCaloriesOut += healthRecord.getCaloriesOut();
+            totalSleep += healthRecord.getSleepHours();
+            healthRecordCount++;
+        }
+    }
+
+    if (healthRecordCount == 0) return "No health data available.\n";
+
+    return "=== STATISTICAL SUMMARY ===\n" +
+           "Average Steps: " + (totalSteps / healthRecordCount) + "\n" +
+           "Total Calories In: " + totalCaloriesIn + "\n" +
+           "Total Calories Out: " + totalCaloriesOut + "\n" +
+           "Average Sleep Hours: " + (totalSleep / healthRecordCount) + "\n";
+}
+
+ private String findBestPerformances() {
+    HealthDetailsS3 maxStepsRecord = null;
+    HealthDetailsS3 maxCaloriesBurnedRecord = null;
+    HealthDetailsS3 maxSleepRecord = null;
+
+    int maxSteps = 0, maxCaloriesBurned = 0, maxSleep = 0;
+
+    for (Object record : records) {
+        if (record instanceof HealthDetailsS3) {
+            HealthDetailsS3 healthRecord = (HealthDetailsS3) record;
+
+            if (healthRecord.getSteps() > maxSteps) {
+                maxSteps = healthRecord.getSteps();
+                maxStepsRecord = healthRecord;
+            }
+
+            if (healthRecord.getCaloriesOut() > maxCaloriesBurned) {
+                maxCaloriesBurned = healthRecord.getCaloriesOut();
+                maxCaloriesBurnedRecord = healthRecord;
+            }
+
+            if (healthRecord.getSleepHours() > maxSleep) {
+                maxSleep = healthRecord.getSleepHours();
+                maxSleepRecord = healthRecord;
+            }
+        }
+    }
+
+    return "=== BEST PERFORMANCES ===\n" +
+           (maxStepsRecord != null ? "Most Steps: " + maxSteps + " (" + maxStepsRecord.getExerciseType() + ")\n" : "No steps data.\n") +
+           (maxCaloriesBurnedRecord != null ? "Most Calories Burned: " + maxCaloriesBurned + " (" + maxCaloriesBurnedRecord.getExerciseType() + ")\n" : "No calorie data.\n") +
+           (maxSleepRecord != null ? "Longest Sleep: " + maxSleep + " hours\n" : "No sleep data.\n");
+}
+
+ private void saveReportAsCSV(String filename) {
+    try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
+        writer.println("Type,Details");
+        for (Object record : records) {
+            if (record instanceof UserS3) {
+                writer.println("User," + ((UserS3) record).getDetails().replace("\n", " "));
+            } else if (record instanceof HealthDetailsS3) {
+                writer.println("Health," + ((HealthDetailsS3) record).getDetails().replace("\n", " "));
+            }
+        }
+
+        writer.println("\n=== Summary ===");
+        writer.println("Summary," + generateStatisticalSummary().replace("\n", " "));
+        writer.println("Best Performances," + findBestPerformances().replace("\n", " "));
+
+        JOptionPane.showMessageDialog(this, "CSV Report saved successfully to " + filename);
+    } catch (IOException e) {
+        JOptionPane.showMessageDialog(this, "Error saving CSV report: " + e.getMessage());
+    }
+}
 
 
     /**
@@ -118,48 +220,62 @@ public class Section3Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_homeButtonSection3ActionPerformed
 
     private void viewProgressButton_Section3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewProgressButton_Section3ActionPerformed
-    StringBuilder output = new StringBuilder();
+   StringBuilder output = new StringBuilder();
 
-    // Fetch and append user details
-    for (UserS3 user : users) {
-        output.append(user.getUserDetails()).append("\n");
-    }
-
-    // Fetch and append health details
-    for (HealthDetailsS3 record : healthRecords) {
-        output.append(record.getHealthDetails()).append("\n");
+    // Dynamically call getDetails() for each record
+    for (Object record : records) {
+        if (record instanceof UserS3) {
+            output.append(((UserS3) record).getDetails()).append("\n");
+        } else if (record instanceof HealthDetailsS3) {
+            output.append(((HealthDetailsS3) record).getDetails()).append("\n");
+        }
     }
 
     // Display data in the output area
     TextArea1Section3.setText(output.toString());
 
+
     }//GEN-LAST:event_viewProgressButton_Section3ActionPerformed
 
     private void generateReportButton_Section3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateReportButton_Section3ActionPerformed
-     StringBuilder report = new StringBuilder("===== REPORT =====\n");
-    
-    // Fetch and append user details
-    for (UserS3 user : users) {
-        report.append(user.getUserDetails()).append("\n");
+ 
+    StringBuilder report = new StringBuilder("===== REPORT =====\n");
+
+    // Dynamically call getDetails() for each record
+    for (Object record : records) {
+        if (record instanceof UserS3) {
+            report.append(((UserS3) record).getDetails()).append("\n");
+        } else if (record instanceof HealthDetailsS3) {
+            report.append(((HealthDetailsS3) record).getDetails()).append("\n");
+        }
     }
-    
-    // Fetch and append health details
-    for (HealthDetailsS3 record : healthRecords) {
-        report.append(record.getHealthDetails()).append("\n");
+
+    // Append statistical summary and best performances
+    String stats = generateStatisticalSummary();
+    report.append(stats).append("\n");
+
+    String bestPerformances = findBestPerformances();
+    report.append(bestPerformances).append("\n");
+
+    // File format selection logic
+    int choice = JOptionPane.showOptionDialog(
+        this,
+        "Select report format:",
+        "Export Report",
+        JOptionPane.DEFAULT_OPTION,
+        JOptionPane.QUESTION_MESSAGE,
+        null,
+        new Object[] { "TXT", "CSV" },
+        "TXT"
+    );
+
+    if (choice == 0) { // TXT
+        saveReportToFile("report.txt", report.toString());
+    } else if (choice == 1) { // CSV
+        saveReportAsCSV("report.csv");
     }
-    
-    // Display the report in a dialog box
-    JOptionPane.showMessageDialog(this, report.toString());
 
-    }                                                             
 
-    private String getUserDetailsFromSection1() {
-    return "Name: John Doe\nAge: 30\nWeight: 70kg\nHeight: 1.75m\nActivity Level: Moderate\nGoals: Lose Weight\n";
-}
-
-    private String getHealthDetailsFromSection2() {
-    return "Steps: 10000\nWater Intake: 2000ml\nCalories Intake: 2000\nActivity Type: Running\n" +
-           "Duration: 60 mins\nSleep Hours: 8\nSleep Quality: Good\n";
 
 
     }//GEN-LAST:event_generateReportButton_Section3ActionPerformed
