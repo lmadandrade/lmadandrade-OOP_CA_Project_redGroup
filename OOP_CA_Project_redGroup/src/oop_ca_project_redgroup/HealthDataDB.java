@@ -255,10 +255,11 @@ public class HealthDataDB {
 
         return healthRecords;
     }
+    
     // Method to get user profile
     public UserProfile getUserProfile() {
         UserProfile profile = null;
-    String sql = "SELECT * FROM user_profile WHERE id = 1"; // Assuming a single user with ID 1
+    String sql = "SELECT * FROM user_profile WHERE id = 1"; 
     try (Statement stmt = healthDBConnection.createStatement();
          ResultSet rs = stmt.executeQuery(sql)) {
         if (rs.next()) {
@@ -287,7 +288,7 @@ public class HealthDataDB {
                  "activity_level = VALUES(activity_level), goal = VALUES(goal), email_notification = VALUES(email_notification), " +
                  "push_notification = VALUES(push_notification), sms_notification = VALUES(sms_notification)";
     try (PreparedStatement pstmt = healthDBConnection.prepareStatement(sql)) {
-        pstmt.setInt(1, profile.getId()); // Use the ID as the primary key
+        pstmt.setInt(1, profile.getId()); 
         pstmt.setString(2, profile.getName());
         pstmt.setInt(3, profile.getAge());
         pstmt.setDouble(4, profile.getWeight());
@@ -296,7 +297,7 @@ public class HealthDataDB {
         pstmt.setString(7, profile.getGoal());
         
         int rowsAffected = pstmt.executeUpdate();
-        System.out.println("Rows affected: " + rowsAffected); // Verify the update
+        System.out.println("Rows affected: " + rowsAffected); 
     } catch (SQLException e) {
         System.err.println("Error saving/updating user profile: " + e.getMessage());
     }

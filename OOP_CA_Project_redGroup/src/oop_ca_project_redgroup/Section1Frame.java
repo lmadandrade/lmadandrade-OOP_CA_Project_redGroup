@@ -38,15 +38,15 @@ public class Section1Frame extends javax.swing.JFrame {
 }
         public Section1Frame() {
     initComponents();
-    initializeUserProfile(); // Load user profile data into the form
+    initializeUserProfile(); // Load user data into the form
     
-    // Add placeholders
+    // placeholders
         addPlaceholder(name_Section1Input, "Enter name");
         addPlaceholder(age_Section1Input, "Enter age");
         addPlaceholder(weight_Section1Input, "(e.g., 70.5)");
         addPlaceholder(height_Section1Input, "(e.g., 175.0)");
         
-        // Add listeners to update BMI when weight or height changes
+        // update bmi when weight or height changes
     weight_Section1Input.addFocusListener(new java.awt.event.FocusAdapter() {
         @Override
         public void focusLost(java.awt.event.FocusEvent e) {
@@ -63,17 +63,17 @@ public class Section1Frame extends javax.swing.JFrame {
         
 }
         // Override the setVisible method
-@Override
-public void setVisible(boolean visible) {
-    if (visible) {
-        initializeUserProfile(); // Reload user profile data when the form is shown
-    }
-    super.setVisible(visible);
+            @Override
+            public void setVisible(boolean visible) {
+                if (visible) {
+                    initializeUserProfile(); // Reload user profile data when the form is open
+                }
+        super.setVisible(visible);
 }
 
         
         
-        // Add the placeholder method here
+        // placeholder method
     private void addPlaceholder(javax.swing.JTextField field, String placeholder) {
         field.setText(placeholder);
         field.setForeground(java.awt.Color.GRAY);
@@ -98,23 +98,23 @@ public void setVisible(boolean visible) {
         
     }
 
-private void updateBMIDetails() {
-    try {
-        // Create a temporary UserProfile instance with current form data
-        double weight = Double.parseDouble(weight_Section1Input.getText());
-        double height = Double.parseDouble(height_Section1Input.getText());
+        private void updateBMIDetails() {
+            try {
+                // Create a temporary UserProfile instance with current form data
+                double weight = Double.parseDouble(weight_Section1Input.getText());
+                double height = Double.parseDouble(height_Section1Input.getText());
 
         UserProfile tempProfile = new UserProfile(
-            0, // Temporary ID
-            "", // Name not needed for BMI calculation
-            0, // Age not needed for BMI calculation
+            0, //  ID
+            "", // not needed 
+            0, // not needed 
             weight,
             height,
-            "", // Activity level not needed
-            ""  // Goal not needed
+            "", // not needed
+            ""  // not needed
         );
 
-        // Calculate and display BMI and classification
+        // Calculate and display bmi and classification
         double bmi = tempProfile.calculateBMI();
         if (bmi != -1) {
             bmiTextField.setText(String.format("%.2f", bmi));
@@ -128,7 +128,7 @@ private void updateBMIDetails() {
             targetTextField.setText("");
         }
     } catch (NumberFormatException e) {
-        // Handle invalid inputs gracefully
+        // invalid inputs 
         bmiTextField.setText("N/A");
         classificationTextField.setText("Invalid input");
         recommendedTextField.setText("");
@@ -378,9 +378,9 @@ private void updateBMIDetails() {
 
     private void saveUserProfile() {
         try {
-        // Create a new UserProfile object from the form fields
+        // new UserProfile object 
         UserProfile updatedProfile = new UserProfile(
-            1, // Assuming the user ID is 1
+            1, // if the user ID is 1
             name_Section1Input.getText(),
             Integer.parseInt(age_Section1Input.getText()),
             Double.parseDouble(weight_Section1Input.getText()),
@@ -389,10 +389,10 @@ private void updateBMIDetails() {
             goal_Section1Selector.getSelectedItem().toString()
         );
 
-        // Save or update the user profile in the database
+        // Save or update the user profile in the DB
         HealthDataDB db = new HealthDataDB();
         db.getConnection();
-        db.saveOrUpdateUserProfile(updatedProfile); // Save the updated profile to the database
+        db.saveOrUpdateUserProfile(updatedProfile); // Save to the DB
         db.closeConnection();
 
         // Log success

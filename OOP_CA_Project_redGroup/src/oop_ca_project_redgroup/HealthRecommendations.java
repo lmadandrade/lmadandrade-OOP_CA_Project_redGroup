@@ -16,20 +16,19 @@ public class HealthRecommendations extends javax.swing.JFrame {
     public HealthRecommendations() {
         initComponents();
         
-        generateRecommendations(); // Populate recommendations on frame load
+        generateRecommendations();
     }
 
-    // Your initComponents() method will be here
 
     private void generateRecommendations() {
         HealthDataDB db = new HealthDataDB();
     try {
         db.getConnection();
 
-        // Fetch the user profile
+        // get the user profile
         UserProfile profile = db.getUserProfile();
         if (profile == null) {
-            // If no user profile is found, display default messages and exit the method
+            // If no user profile is found, display messages and exit the method
             nutritionValueLabel.setText("No data available.");
             exerciseValueLabel.setText("No data available.");
             hydrationValueLabel.setText("No data available.");
@@ -39,12 +38,12 @@ public class HealthRecommendations extends javax.swing.JFrame {
             return;
         }
 
-        // Fetch aggregated health data
+        // get health data
         double avgSteps = db.getAverageSteps();
         double avgWaterIntake = db.getAverageWaterIntake();
         double avgSleepHours = db.getAverageSleepHours();
 
-        // Hydration Recommendation
+        // water Recommendation
         String hydrationRecommendation;
         if (avgWaterIntake >= 2) {
             hydrationRecommendation = "Your water intake is satisfactory. Keep it up!";
@@ -52,7 +51,7 @@ public class HealthRecommendations extends javax.swing.JFrame {
             hydrationRecommendation = String.format("You should drink %.1f more liters of water daily.", 2 - avgWaterIntake);
         }
 
-        // Sleep Recommendation
+        // sleep recommendation
         String sleepRecommendation;
         if (avgSleepHours >= 8) {
             sleepRecommendation = "Your sleep schedule is excellent. Keep it consistent!";
@@ -60,7 +59,7 @@ public class HealthRecommendations extends javax.swing.JFrame {
             sleepRecommendation = String.format("Try to get %.1f more hours of sleep per night.", 8 - avgSleepHours);
         }
 
-        // Activity Level Recommendation
+        // Activity level Recommendation
         String activityEnhancement;
         if ("Sedentary".equalsIgnoreCase(profile.getActivityLevel())) {
             activityEnhancement = "Start with light activities such as walking 30 minutes daily.";
@@ -72,7 +71,7 @@ public class HealthRecommendations extends javax.swing.JFrame {
             activityEnhancement = "Maintain a balanced mix of cardio and strength training.";
         }
 
-        // Nutrition Recommendation
+        // nutrition Recommendation
         String nutritionRecommendation = "Maintain a balanced diet.";
         if ("Weight Loss".equalsIgnoreCase(profile.getGoal())) {
             nutritionRecommendation = "Focus on a calorie deficit with high protein and low carbs.";
@@ -96,14 +95,14 @@ public class HealthRecommendations extends javax.swing.JFrame {
 
         // Update the labels
         nutritionValueLabel.setText(nutritionRecommendation);
-        exerciseValueLabel.setText(activityEnhancement); // Adjust exercise based on activity level
+        exerciseValueLabel.setText(activityEnhancement); 
         hydrationValueLabel.setText(hydrationRecommendation);
         sleepValueLabel.setText(sleepRecommendation);
         activityValueLabel.setText(activityEnhancement);
         healthValueLabel.setText(healthGoalAlignment);
 
     } catch (Exception e) {
-        // Handle any unexpected exceptions
+        // unexpected exceptions
         nutritionValueLabel.setText("Error retrieving data.");
         exerciseValueLabel.setText("Error retrieving data.");
         hydrationValueLabel.setText("Error retrieving data.");
@@ -111,9 +110,10 @@ public class HealthRecommendations extends javax.swing.JFrame {
         activityValueLabel.setText("Error retrieving data.");
         healthValueLabel.setText("Error retrieving data.");
         e.printStackTrace();
-    } finally {
-        db.closeConnection(); // Ensure the connection is closed
-    }
+        
+            } finally {
+                db.closeConnection();
+        }
         
     }
 
@@ -251,7 +251,7 @@ public class HealthRecommendations extends javax.swing.JFrame {
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         new RedGroup_LandingPageGUI().setVisible(true);
-        this.dispose(); // Close the current window
+        this.dispose(); 
     }//GEN-LAST:event_homeButtonActionPerformed
 
     /**

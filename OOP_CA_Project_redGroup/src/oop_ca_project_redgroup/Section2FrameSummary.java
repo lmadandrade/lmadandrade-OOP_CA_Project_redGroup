@@ -158,16 +158,16 @@ public class Section2FrameSummary extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonSection2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonSection2ActionPerformed
-        Section2Frame section2Frame = new Section2Frame(); // Create a new instance of the main frame
-    section2Frame.setVisible(true); // Display the main frame
-    this.dispose(); // Close the current summary frame
+        Section2Frame section2Frame = new Section2Frame(); 
+        section2Frame.setVisible(true); 
+        this.dispose(); 
     }//GEN-LAST:event_backButtonSection2ActionPerformed
 
     private void summaryTimeframeSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_summaryTimeframeSelectorActionPerformed
-            // Fetch the selected timeframe from the dropdown
+            // get the selected timeframe from the dropdown
         String selectedTimeframe = summaryTimeframeSelector.getSelectedItem().toString();
 
-        // Fetch the filtered data from the database
+        // get the data from the database
         HealthDataDB db = new HealthDataDB();
         db.getConnection();
         ArrayList<HealthRecord> records = db.getHealthDataByTimeframe(selectedTimeframe);
@@ -182,7 +182,7 @@ public class Section2FrameSummary extends javax.swing.JFrame {
         double avgSleepHours = calculateAverageSleepHours(records);
         String mostFrequentSleepQuality = calculateMostFrequentSleepQuality(records);
 
-        // Update UI components
+        // Update UI 
         stepsAvg.setText("Average Steps: " + (avgSteps > 0 ? String.format("%.2f", avgSteps) : "No Data"));
         waterAvg.setText("Average Water Intake: " + (avgWater > 0 ? String.format("%.2f", avgWater) + " L" : "No Data"));
         caloriesAvg.setText("Average Calories: " + (avgCalories > 0 ? String.format("%.2f", avgCalories) : "No Data"));

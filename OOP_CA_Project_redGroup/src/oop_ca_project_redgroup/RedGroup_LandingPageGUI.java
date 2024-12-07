@@ -129,9 +129,9 @@ public class RedGroup_LandingPageGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_Section3_landingPageButtonActionPerformed
 
     private void dailyTips_landingPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dailyTips_landingPageButtonActionPerformed
-       // Open the HealthRecommendations frame
+ 
     new HealthRecommendations().setVisible(true);
-    this.dispose(); // Close the current window
+    this.dispose();
     }//GEN-LAST:event_dailyTips_landingPageButtonActionPerformed
 
     /**

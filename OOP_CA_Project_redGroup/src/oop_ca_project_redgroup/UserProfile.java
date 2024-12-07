@@ -12,7 +12,7 @@ package oop_ca_project_redgroup;
 
 public class UserProfile {
 
-    private int id; // Unique identifier for the user
+    private int id; 
     private String name;
     private int age;
     private double weight;
@@ -23,13 +23,13 @@ public class UserProfile {
     /**
      * Constructor to initialize a UserProfile instance.
      *
-     * @param id                 The unique identifier for the user.
-     * @param name               The user's name.
-     * @param age                The user's age.
-     * @param weight             The user's weight in kilograms.
-     * @param height             The user's height in meters.
-     * @param activityLevel      The user's activity level (e.g., "Low", "Moderate", "High").
-     * @param goal               The user's fitness or health goal.
+     * @param id                 The unique identifier for the user
+     * @param name               The user's name
+     * @param age                The user's age
+     * @param weight             The user's weight in kilograms
+     * @param height             The user's height in meters
+     * @param activityLevel      The user's activity level
+     * @param goal               The user's fitness or health goal
      */
     public UserProfile(int id, String name, int age, double weight, double height, String activityLevel, String goal) {
         this.id = id;
@@ -101,9 +101,6 @@ public class UserProfile {
 
     /**
      * Checks if this UserProfile instance is equal to another.
-     * Used to compare profiles for detecting changes.
-     *
-     * @param obj The other object to compare.
      * @return true if the objects are equal, false otherwise.
      */
     @Override
@@ -134,15 +131,15 @@ public class UserProfile {
     }
     
             /**
-         * Calculates the BMI (Body Mass Index) based on the user's weight and height.
+         * Calculates the BMI based on the user's weight and height.
          *
-         * @return The calculated BMI, or -1 if height or weight is invalid.
+         * @return The calculated bmi, or -1 if height or weight is invalid.
          */
         public double calculateBMI() {
              if (height > 0) {
                 return weight / ((height / 100) * (height / 100)); // Convert height to meters
                 }
-                return -1; // Return -1 for invalid height
+                return -1; //  invalid height
             }
 
 

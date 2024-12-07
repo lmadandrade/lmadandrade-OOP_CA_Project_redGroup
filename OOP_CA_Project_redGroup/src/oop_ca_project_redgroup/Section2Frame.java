@@ -20,8 +20,8 @@ public class Section2Frame extends javax.swing.JFrame {
      */
     public Section2Frame() {
         initComponents(); 
-        db = new HealthDataDB(); // init the DB
-        db.getConnection(); // Connect to the DB
+        db = new HealthDataDB(); 
+        db.getConnection(); 
 
         // placeholders to the fields
         addPlaceholder(steps_Section2Text, "Enter steps (e.g., 10000)");
@@ -36,12 +36,12 @@ public class Section2Frame extends javax.swing.JFrame {
         sleepQuality_Section2ComboBox.setModel(
             new javax.swing.DefaultComboBoxModel<>(new String[]{"Select sleep quality", "Poor", "Fair", "Good", "Excellent"}));
 
-        // windowListener for cleanup when app terminates
+        // cleanup when app is closed
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent e) {
-                db.closeConnection(); // Ensure the database connection is closed
-                System.exit(0); // Exit the application
+                db.closeConnection(); 
+                System.exit(0); 
             }
         });
     }
