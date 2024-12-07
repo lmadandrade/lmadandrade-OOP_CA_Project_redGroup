@@ -163,7 +163,7 @@ public class RedGroup_LandingPageGUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RedGroup_LandingPageGUI().setVisible(true);
+                new RedGroup_LoginPageGUI().setVisible(true);
             }
         });
     }

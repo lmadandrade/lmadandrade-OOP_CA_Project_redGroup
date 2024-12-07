@@ -61,9 +61,9 @@
                                       <Component id="loginPage_LoginPassword" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="loginPage_LoginEmail_input" min="-2" pref="176" max="-2" attributes="0"/>
-                                      <Component id="loginPage_LoginPassword_input" min="-2" pref="91" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="loginPage_LoginEmail_input" pref="176" max="32767" attributes="0"/>
+                                      <Component id="loginPage_LoginPassword_input" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -85,8 +85,8 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="loginPage_LoginPassword_input" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="loginPage_LoginPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="loginPage_LoginPassword_input" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -119,8 +119,6 @@
             <Property name="text" type="java.lang.String" value="Password:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="loginPage_LoginPassword_input">
-        </Component>
         <Component class="javax.swing.JButton" name="buttonLogin">
           <Properties>
             <Property name="text" type="java.lang.String" value="Login"/>
@@ -136,6 +134,8 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonSignUpActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="loginPage_LoginPassword_input">
         </Component>
       </SubComponents>
     </Container>
