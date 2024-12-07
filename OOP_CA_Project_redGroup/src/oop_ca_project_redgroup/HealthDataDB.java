@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.sql.PreparedStatement;
 
 
 /**
@@ -253,6 +254,59 @@ public class HealthDataDB {
         }
 
         return healthRecords;
+    }
+    // Method to get user profile
+    public UserProfile getUserProfile() {
+        UserProfile profile = null;
+    String sql = "SELECT * FROM user_profile WHERE id = 1"; // Assuming a single user with ID 1
+    try (Statement stmt = healthDBConnection.createStatement();
+         ResultSet rs = stmt.executeQuery(sql)) {
+        if (rs.next()) {
+            profile = new UserProfile(
+                rs.getInt("id"), // Fetch the ID
+                rs.getString("name"),
+                rs.getInt("age"),
+                rs.getDouble("weight"),
+                rs.getDouble("height"),
+                rs.getString("activity_level"),
+                rs.getString("goal"),
+                rs.getBoolean("email_notification"),
+                rs.getBoolean("push_notification"),
+                rs.getBoolean("sms_notification")
+            );
+        }
+    } catch (SQLException e) {
+        System.err.println("Error retrieving user profile: " + e.getMessage());
+    }
+    return profile;
+    }
+
+    // Method to save or update user profile
+    public void saveOrUpdateUserProfile(UserProfile profile) {
+            String sql = "INSERT INTO user_profile (id, name, age, weight, height, activity_level, goal, email_notification, push_notification, sms_notification) " +
+                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) " +
+                 "ON DUPLICATE KEY UPDATE " +
+                 "name = VALUES(name), age = VALUES(age), weight = VALUES(weight), height = VALUES(height), " +
+                 "activity_level = VALUES(activity_level), goal = VALUES(goal), email_notification = VALUES(email_notification), " +
+                 "push_notification = VALUES(push_notification), sms_notification = VALUES(sms_notification)";
+    try (PreparedStatement pstmt = healthDBConnection.prepareStatement(sql)) {
+        pstmt.setInt(1, profile.getId()); // Use the ID as the primary key
+        pstmt.setString(2, profile.getName());
+        pstmt.setInt(3, profile.getAge());
+        pstmt.setDouble(4, profile.getWeight());
+        pstmt.setDouble(5, profile.getHeight());
+        pstmt.setString(6, profile.getActivityLevel());
+        pstmt.setString(7, profile.getGoal());
+        pstmt.setBoolean(8, profile.isEmailNotification());
+        pstmt.setBoolean(9, profile.isPushNotification());
+        pstmt.setBoolean(10, profile.isSmsNotification());
+
+        int rowsAffected = pstmt.executeUpdate();
+        System.out.println("Rows affected: " + rowsAffected); // Verify the update
+    } catch (SQLException e) {
+        System.err.println("Error saving/updating user profile: " + e.getMessage());
+    }
+
     }
 }
 

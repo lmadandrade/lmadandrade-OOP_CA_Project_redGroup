@@ -92,7 +92,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="Section1_landingPageButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Section 1 - User Setttings"/>
+            <Property name="text" type="java.lang.String" value="User Setttings"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Section1_landingPageButtonActionPerformed"/>
@@ -100,7 +100,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="Section2_landingPageButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Section 2 - Health Overview"/>
+            <Property name="text" type="java.lang.String" value="Health Overview"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Section2_landingPageButtonActionPerformed"/>
@@ -108,7 +108,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="Section3_landingPageButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Section 3 - Report"/>
+            <Property name="text" type="java.lang.String" value="Report"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Section3_landingPageButtonActionPerformed"/>
