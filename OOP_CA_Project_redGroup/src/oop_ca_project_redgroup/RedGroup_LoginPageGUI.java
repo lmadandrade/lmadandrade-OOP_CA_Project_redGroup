@@ -4,9 +4,11 @@
  */
 package oop_ca_project_redgroup;
 
+import javax.swing.JOptionPane;
+
 /**
  *
- * @author lucasandrade
+ * @author Lucas Dantas
  */
 public class RedGroup_LoginPageGUI extends javax.swing.JFrame {
 
@@ -31,9 +33,9 @@ public class RedGroup_LoginPageGUI extends javax.swing.JFrame {
         LoginPage_LoginEmail = new javax.swing.JLabel();
         loginPage_LoginEmail_input = new javax.swing.JTextField();
         loginPage_LoginPassword = new javax.swing.JLabel();
-        loginPage_LoginPassword_input = new javax.swing.JTextField();
         buttonLogin = new javax.swing.JButton();
         buttonSignUp = new javax.swing.JButton();
+        loginPage_LoginPassword_input = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,9 +81,9 @@ public class RedGroup_LoginPageGUI extends javax.swing.JFrame {
                                     .addComponent(LoginPage_LoginEmail)
                                     .addComponent(loginPage_LoginPassword))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(loginPage_LoginEmail_input, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(loginPage_LoginPassword_input, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(loginPage_LoginEmail_input, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+                                    .addComponent(loginPage_LoginPassword_input))))))
                 .addContainerGap(120, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -95,8 +97,8 @@ public class RedGroup_LoginPageGUI extends javax.swing.JFrame {
                     .addComponent(loginPage_LoginEmail_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(loginPage_LoginPassword_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(loginPage_LoginPassword))
+                    .addComponent(loginPage_LoginPassword)
+                    .addComponent(loginPage_LoginPassword_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(69, 69, 69)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonSignUp)
@@ -121,12 +123,65 @@ public class RedGroup_LoginPageGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSignUpActionPerformed
-        // TODO add your handling code here:
+     String email = loginPage_LoginEmail_input.getText().trim();
+    String password = loginPage_LoginPassword_input.getText().trim();
+
+    // Input validation
+    if (email.isEmpty() || password.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Please enter both email and password.");
+        return;
+    }
+
+    if (!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+        JOptionPane.showMessageDialog(this, "Please enter a valid email address.");
+        return;
+    }
+
+    if (password.length() < 6) {
+        JOptionPane.showMessageDialog(this, "Password must be at least 6 characters.");
+        return;
+    }
+
+    // Call the static addUser method directly
+    boolean isAdded = User_LoginDummy.addUser(email, password);
+
+    if (isAdded) {
+        JOptionPane.showMessageDialog(this, "Sign Up Successful! You can now log in.");
+    } else {
+        JOptionPane.showMessageDialog(this, "Email is already registered. Try logging in.");
+    }
     }//GEN-LAST:event_buttonSignUpActionPerformed
 
     private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
-        new RedGroup_LandingPageGUI().setVisible(true); 
-        this.dispose(); 
+      // Fetch email and password input
+    String email = loginPage_LoginEmail_input.getText().trim();
+    String password = loginPage_LoginPassword_input.getText().trim();
+
+    // Input validation
+    if (email.isEmpty() || password.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Please enter both email and password.");
+        return;
+    }
+
+    if (!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+        JOptionPane.showMessageDialog(this, "Please enter a valid email address.");
+        return;
+    }
+
+    // Authentication using User_LoginDummy
+    boolean isValid = User_LoginDummy.validateLogin(email, password); // Call directly
+
+     if (isValid) {
+        // Redirect to landing page directly (no success message)
+        RedGroup_LandingPageGUI landingPage = new RedGroup_LandingPageGUI();
+        landingPage.setVisible(true);
+
+        // Close login page
+        this.dispose();
+    } else {
+        // Show error message
+        JOptionPane.showMessageDialog(this, "Invalid email or password.");
+    }
     }//GEN-LAST:event_buttonLoginActionPerformed
 
     /**
@@ -160,7 +215,9 @@ public class RedGroup_LoginPageGUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RedGroup_LoginPageGUI().setVisible(true);
+            RedGroup_LoginPageGUI loginPage = new RedGroup_LoginPageGUI(); // Declare the variable
+            loginPage.setLocationRelativeTo(null); // Center the frame on the screen
+            loginPage.setVisible(true); // Make it visible
             }
         });
     }
@@ -172,7 +229,7 @@ public class RedGroup_LoginPageGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField loginPage_LoginEmail_input;
     private javax.swing.JLabel loginPage_LoginPassword;
-    private javax.swing.JTextField loginPage_LoginPassword_input;
+    private javax.swing.JPasswordField loginPage_LoginPassword_input;
     private javax.swing.JLabel titleLoginPage;
     // End of variables declaration//GEN-END:variables
 }
