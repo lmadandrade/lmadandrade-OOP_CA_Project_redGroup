@@ -38,7 +38,7 @@ public class RedGroup_LandingPageGUI extends javax.swing.JFrame {
 
         titleLandingPage.setText("Red Group - Health App - Landing Page");
 
-        Section1_landingPageButton.setText("Section 1 - User Setttings");
+        Section1_landingPageButton.setText("Section 1 - User ");
         Section1_landingPageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Section1_landingPageButtonActionPerformed(evt);

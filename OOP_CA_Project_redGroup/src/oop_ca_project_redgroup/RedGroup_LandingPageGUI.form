@@ -92,7 +92,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="Section1_landingPageButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Section 1 - User Setttings"/>
+            <Property name="text" type="java.lang.String" value="Section 1 - User "/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Section1_landingPageButtonActionPerformed"/>
