@@ -269,10 +269,7 @@ public class HealthDataDB {
                 rs.getDouble("weight"),
                 rs.getDouble("height"),
                 rs.getString("activity_level"),
-                rs.getString("goal"),
-                rs.getBoolean("email_notification"),
-                rs.getBoolean("push_notification"),
-                rs.getBoolean("sms_notification")
+                rs.getString("goal")
             );
         }
     } catch (SQLException e) {
@@ -297,10 +294,7 @@ public class HealthDataDB {
         pstmt.setDouble(5, profile.getHeight());
         pstmt.setString(6, profile.getActivityLevel());
         pstmt.setString(7, profile.getGoal());
-        pstmt.setBoolean(8, profile.isEmailNotification());
-        pstmt.setBoolean(9, profile.isPushNotification());
-        pstmt.setBoolean(10, profile.isSmsNotification());
-
+        
         int rowsAffected = pstmt.executeUpdate();
         System.out.println("Rows affected: " + rowsAffected); // Verify the update
     } catch (SQLException e) {
