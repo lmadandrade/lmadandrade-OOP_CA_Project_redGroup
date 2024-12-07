@@ -12,6 +12,7 @@ import java.util.ArrayList;
  */
 public class Section2FrameSummary extends javax.swing.JFrame {
 
+    private int userId;
     /**
      * Creates new form Section2FrameSummary
      */
@@ -158,9 +159,9 @@ public class Section2FrameSummary extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonSection2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonSection2ActionPerformed
-        Section2Frame section2Frame = new Section2Frame(); 
-        section2Frame.setVisible(true); 
-        this.dispose(); 
+    Section2Frame section2Frame = new Section2Frame(userId);
+    section2Frame.setVisible(true); // Display the main frame
+    this.dispose(); // Close the current summary frame
     }//GEN-LAST:event_backButtonSection2ActionPerformed
 
     private void summaryTimeframeSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_summaryTimeframeSelectorActionPerformed
@@ -288,3 +289,5 @@ public class Section2FrameSummary extends javax.swing.JFrame {
     private javax.swing.JLabel waterAvg;
     // End of variables declaration//GEN-END:variables
 }
+
+

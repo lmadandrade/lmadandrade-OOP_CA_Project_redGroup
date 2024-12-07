@@ -172,13 +172,12 @@ public class RedGroup_LoginPageGUI extends javax.swing.JFrame {
     boolean isValid = User_LoginDummy.validateLogin(email, password); // Call directly
 
      if (isValid) {
-        // Redirect to landing page directly (no success message)
-        RedGroup_LandingPageGUI landingPage = new RedGroup_LandingPageGUI();
-        landingPage.setVisible(true);
-
-        // Close login page
-        this.dispose();
-    } else {
+    int userId = User_LoginDummy.getUserId(email); // Fetch the user ID from the database
+    RedGroup_LandingPageGUI landingPage = new RedGroup_LandingPageGUI(userId); // Pass user ID
+    landingPage.setVisible(true);
+    this.dispose();
+    }   
+     else {
         // Show error message
         JOptionPane.showMessageDialog(this, "Invalid email or password.");
     }

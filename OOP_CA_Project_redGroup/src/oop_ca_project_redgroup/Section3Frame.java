@@ -232,7 +232,7 @@
 
         // Dynamically call getDetails() for each record
         for (Object record : records) {
-            output.append(record.toString()).append("\n");
+            output.append(record.toString()).append("\n\n");
         }
 
         // Display data in the output area
@@ -322,3 +322,4 @@
     private javax.swing.JButton viewProgressButton_Section3;
     // End of variables declaration//GEN-END:variables
 }
+
