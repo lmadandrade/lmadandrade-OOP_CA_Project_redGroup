@@ -4,6 +4,8 @@
  */
 package oop_ca_project_redgroup;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author lucasandrade
@@ -16,6 +18,21 @@ public class RedGroup_LandingPageGUI extends javax.swing.JFrame {
     public RedGroup_LandingPageGUI() {
         initComponents();
     }
+    private int userId;
+
+    public RedGroup_LandingPageGUI(int userId) {
+    this.userId = userId;
+    initComponents();
+    displayUserData(); // Show user-specific data
+}
+
+    private void displayUserData() {
+    HealthDataDB db = new HealthDataDB();
+    db.getConnection();
+    ArrayList<HealthRecord> userRecords = db.getHealthDataByUser(userId);
+    // Display user records in the GUI
+    db.closeConnection();
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -124,8 +141,8 @@ public class RedGroup_LandingPageGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_Section1_landingPageButtonActionPerformed
 
     private void Section2_landingPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Section2_landingPageButtonActionPerformed
-        new Section2Frame().setVisible(true); 
-        this.dispose(); 
+    new Section2Frame(userId).setVisible(true);
+    this.dispose(); 
      }//GEN-LAST:event_Section2_landingPageButtonActionPerformed
 
     private void Section3_landingPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Section3_landingPageButtonActionPerformed

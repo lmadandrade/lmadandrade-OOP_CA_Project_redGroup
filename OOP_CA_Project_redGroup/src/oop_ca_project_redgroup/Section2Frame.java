@@ -11,16 +11,18 @@ package oop_ca_project_redgroup;
  * @author lucasandrade
  */
 public class Section2Frame extends javax.swing.JFrame {
-
-    // Instance of HealthDataDB
+    private int userId; // Add a field to store the userId
     private HealthDataDB db;
+
     
     /**
      * Creates new form Section2Frame
      */
-    public Section2Frame() {
-        initComponents(); 
-        db = new HealthDataDB(); // init the DB
+    // Updated constructor to accept userId
+    public Section2Frame(int userId) {
+        this.userId = userId; // Store the userId
+        initComponents();
+        db = new HealthDataDB(); // Initialize the DB
         db.getConnection(); // Connect to the DB
 
         // placeholders to the fields
@@ -288,8 +290,7 @@ public class Section2Frame extends javax.swing.JFrame {
 
             // create and add HealthRecord to database
             HealthRecord record = new HealthRecord(steps, water, calories, activityType, duration, sleepHours, sleepQuality, null);
-            db.addHealthData(record);
-
+            db.addHealthData(record, userId);
 
             // Show message in the label is inout is valid
             addLabel_Section2.setText("Data added successfully! Check summary for an overview.");
@@ -369,7 +370,7 @@ public class Section2Frame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Section2Frame().setVisible(true);
+            new Section2Frame(1).setVisible(true); // Pass a test userId
             }
         });
     }

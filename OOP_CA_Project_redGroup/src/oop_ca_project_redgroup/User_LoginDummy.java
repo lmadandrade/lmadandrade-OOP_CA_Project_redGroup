@@ -2,6 +2,12 @@ package oop_ca_project_redgroup;
 
 import java.util.ArrayList;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class User_LoginDummy {
     private String email;
     private String password;
@@ -19,6 +25,8 @@ public class User_LoginDummy {
     static {
         dummyUsers.add(new User_LoginDummy("admin@example.com", "admin123")); // Default user
     }
+    
+    
 
     // Getters and Setters
     public String getEmail() {
@@ -58,4 +66,19 @@ public class User_LoginDummy {
         dummyUsers.add(new User_LoginDummy(email, password));
         return true; // Successfully added
     }
+    
+    public static int getUserId(String email) {
+    String sql = "SELECT id FROM users WHERE email = ?";
+    try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/DBhealthApp", "root", "password");
+         PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        pstmt.setString(1, email);
+        ResultSet rs = pstmt.executeQuery();
+        if (rs.next()) {
+            return rs.getInt("id"); // Return the user ID
+        }
+    } catch (SQLException e) {
+        System.err.println("Error fetching user ID: " + e.getMessage());
+    }
+    return -1; // Return -1 if user is not found
+}
 }

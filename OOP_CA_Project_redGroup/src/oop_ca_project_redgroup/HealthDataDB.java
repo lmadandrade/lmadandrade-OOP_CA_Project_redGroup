@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.sql.PreparedStatement;
+import org.mindrot.jbcrypt.BCrypt;
 
 
 /**
@@ -26,14 +27,15 @@ public class HealthDataDB {
      * This opens a connection to the DB.
      * 
      */
-   public void getConnection() {
+ public void getConnection() {
     try {
-        // connection to the database
-        healthDBConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/DBhealthApp", "root", "password");
-        System.out.println("Connection successful.");
+        if (healthDBConnection == null || healthDBConnection.isClosed()) {
+            healthDBConnection = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/DBhealthApp", "root", "password");
+            System.out.println("Connection successful.");
+        }
     } catch (SQLException ex) {
-        // Print an error message if the connection fails
-        System.out.println("SQL Exception on Connect: " + ex.getLocalizedMessage());
+        System.err.println("SQL Exception on Connect: " + ex.getLocalizedMessage());
     }
 }
 
@@ -41,24 +43,81 @@ public class HealthDataDB {
     /**
      * This adds a new health record to the database.
      */
-  public void addHealthData(HealthRecord record) {
-    String sql = "INSERT INTO health_data (steps, water, calories, activity_type, duration, sleep_hours, sleep_quality, timestamp) "
-                 + "VALUES (" 
-                 + record.getSteps() + ", " 
-                 + record.getWaterIntake() + ", "
-                 + record.getCalories() + ", '" 
-                 + record.getActivityType().strip() + "', "
-                 + record.getDuration() + ", "
-                 + record.getSleepHours() + ", '"
-                 + record.getSleepQuality().strip() + "', CURRENT_TIMESTAMP)";
-    try {
-        Statement myStatement = healthDBConnection.createStatement();
-        myStatement.executeUpdate(sql);
+  public void addHealthData(HealthRecord record, int userId) {
+    String sql = "INSERT INTO health_data (user_id, steps, water, calories, activity_type, duration, sleep_hours, sleep_quality, timestamp) "
+                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)";
+    try (PreparedStatement pstmt = healthDBConnection.prepareStatement(sql)) {
+        pstmt.setInt(1, userId); // Set the user ID
+        pstmt.setInt(2, record.getSteps()); // Set steps
+        pstmt.setDouble(3, record.getWaterIntake()); // Set water intake
+        pstmt.setDouble(4, record.getCalories()); // Set calories burned
+        pstmt.setString(5, record.getActivityType()); // Set activity type
+        pstmt.setDouble(6, record.getDuration()); // Set duration
+        pstmt.setDouble(7, record.getSleepHours()); // Set sleep hours
+        pstmt.setString(8, record.getSleepQuality()); // Set sleep quality
+
+        pstmt.executeUpdate(); // Execute the query
+        System.out.println("Health data added successfully.");
     } catch (SQLException e) {
-        System.out.println("SQL Exception on insert: " + e.getLocalizedMessage());
+        System.err.println("Error adding health data: " + e.getMessage());
+    }
+}
+// Retrieve health data for a specific user
+public ArrayList<HealthRecord> getHealthDataByUser(int userId) {
+    ArrayList<HealthRecord> healthRecords = new ArrayList<>();
+    String sql = "SELECT * FROM health_data WHERE user_id = ?";
+    try (PreparedStatement pstmt = healthDBConnection.prepareStatement(sql)) {
+        pstmt.setInt(1, userId);
+        ResultSet rs = pstmt.executeQuery();
+        while (rs.next()) {
+            HealthRecord record = new HealthRecord(
+                rs.getInt("steps"),
+                rs.getDouble("water"),
+                rs.getDouble("calories"),
+                rs.getString("activity_type"),
+                rs.getDouble("duration"),
+                rs.getDouble("sleep_hours"),
+                rs.getString("sleep_quality"),
+                rs.getString("timestamp")
+            );
+            healthRecords.add(record);
+        }
+    } catch (SQLException e) {
+        System.err.println("Error retrieving health data: " + e.getMessage());
+    }
+    return healthRecords;
+}
+  public boolean registerUser(String email, String password) {
+    String sql = "INSERT INTO users (email, password_hash) VALUES (?, ?)";
+    try (PreparedStatement pstmt = healthDBConnection.prepareStatement(sql)) {
+        // Use a secure password hashing library like BCrypt or PBKDF2
+        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+        pstmt.setString(1, email);
+        pstmt.setString(2, hashedPassword);
+        pstmt.executeUpdate();
+        return true;
+    } catch (SQLException e) {
+        System.err.println("Error registering user: " + e.getMessage());
+        return false;
     }
 }
 
+// Method to validate login credentials
+public boolean validateLogin(String email, String password) {
+    String sql = "SELECT password_hash FROM users WHERE email = ?";
+    try (PreparedStatement pstmt = healthDBConnection.prepareStatement(sql)) {
+        pstmt.setString(1, email);
+        ResultSet rs = pstmt.executeQuery();
+        if (rs.next()) {
+            String storedHash = rs.getString("password_hash");
+            // Use BCrypt to verify the password
+            return BCrypt.checkpw(password, storedHash);
+        }
+    } catch (SQLException e) {
+        System.err.println("Error validating login: " + e.getMessage());
+    }
+    return false;
+}
 
     /**
      * get all health records from the database as a list of HealthRecord
