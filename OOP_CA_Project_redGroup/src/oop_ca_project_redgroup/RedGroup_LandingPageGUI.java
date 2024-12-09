@@ -49,7 +49,6 @@ public class RedGroup_LandingPageGUI extends javax.swing.JFrame {
         Section2_landingPageButton = new javax.swing.JButton();
         Section3_landingPageButton = new javax.swing.JButton();
         dailyTips_landingPageButton = new javax.swing.JButton();
-        reminder_landingPageButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,16 +68,19 @@ public class RedGroup_LandingPageGUI extends javax.swing.JFrame {
             }
         });
 
-        Section3_landingPageButton.setText("Report");
+        Section3_landingPageButton.setText("My Reports");
         Section3_landingPageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Section3_landingPageButtonActionPerformed(evt);
             }
         });
 
-        dailyTips_landingPageButton.setText("Daily Tips");
-
-        reminder_landingPageButton.setText("Set a Reminder");
+        dailyTips_landingPageButton.setText("My Health Recommendation");
+        dailyTips_landingPageButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dailyTips_landingPageButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -87,17 +89,12 @@ public class RedGroup_LandingPageGUI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(166, 166, 166)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dailyTips_landingPageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Section1_landingPageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(titleLandingPage)
                     .addComponent(Section2_landingPageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Section3_landingPageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(222, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(dailyTips_landingPageButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(reminder_landingPageButton)
-                .addGap(94, 94, 94))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,13 +105,11 @@ public class RedGroup_LandingPageGUI extends javax.swing.JFrame {
                 .addComponent(Section1_landingPageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Section2_landingPageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Section3_landingPageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dailyTips_landingPageButton)
-                    .addComponent(reminder_landingPageButton))
-                .addGap(42, 42, 42))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dailyTips_landingPageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -149,6 +144,12 @@ public class RedGroup_LandingPageGUI extends javax.swing.JFrame {
         new Section3Frame().setVisible(true); 
         this.dispose(); 
     }//GEN-LAST:event_Section3_landingPageButtonActionPerformed
+
+    private void dailyTips_landingPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dailyTips_landingPageButtonActionPerformed
+ 
+    new HealthRecommendations().setVisible(true);
+    this.dispose();
+    }//GEN-LAST:event_dailyTips_landingPageButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,7 +192,6 @@ public class RedGroup_LandingPageGUI extends javax.swing.JFrame {
     private javax.swing.JButton Section3_landingPageButton;
     private javax.swing.JButton dailyTips_landingPageButton;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton reminder_landingPageButton;
     private javax.swing.JLabel titleLandingPage;
     // End of variables declaration//GEN-END:variables
 }

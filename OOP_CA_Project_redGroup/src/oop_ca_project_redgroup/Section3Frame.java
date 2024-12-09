@@ -322,3 +322,4 @@
     private javax.swing.JButton viewProgressButton_Section3;
     // End of variables declaration//GEN-END:variables
 }
+

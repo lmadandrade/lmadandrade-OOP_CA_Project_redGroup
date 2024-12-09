@@ -31,35 +31,49 @@ public class Section1Frame extends javax.swing.JFrame {
         height_Section1Input.setText(String.valueOf(profile.getHeight()));
         activityLevel_Section1Selector.setSelectedItem(profile.getActivityLevel());
         goal_Section1Selector.setSelectedItem(profile.getGoal());
-        emailNotification_checkBox.setSelected(profile.isEmailNotification());
-        pushNotification_checkBox.setSelected(profile.isPushNotification());
-        smsNotification_checkBox.setSelected(profile.isSmsNotification());
+        
+        // Update BMI details after loading profile data
+        updateBMIDetails();
     }
 }
         public Section1Frame() {
     initComponents();
-    initializeUserProfile(); // Load user profile data into the form
+    initializeUserProfile(); // Load user data into the form
     
-    // Add placeholders
+    // placeholders
         addPlaceholder(name_Section1Input, "Enter name");
         addPlaceholder(age_Section1Input, "Enter age");
         addPlaceholder(weight_Section1Input, "(e.g., 70.5)");
         addPlaceholder(height_Section1Input, "(e.g., 175.0)");
         
+        // update bmi when weight or height changes
+    weight_Section1Input.addFocusListener(new java.awt.event.FocusAdapter() {
+        @Override
+        public void focusLost(java.awt.event.FocusEvent e) {
+            updateBMIDetails();
+        }
+    });
+
+    height_Section1Input.addFocusListener(new java.awt.event.FocusAdapter() {
+        @Override
+        public void focusLost(java.awt.event.FocusEvent e) {
+            updateBMIDetails();
+        }
+    });
         
 }
         // Override the setVisible method
-@Override
-public void setVisible(boolean visible) {
-    if (visible) {
-        initializeUserProfile(); // Reload user profile data when the form is shown
-    }
-    super.setVisible(visible);
+            @Override
+            public void setVisible(boolean visible) {
+                if (visible) {
+                    initializeUserProfile(); // Reload user profile data when the form is open
+                }
+        super.setVisible(visible);
 }
 
         
         
-        // Add the placeholder method here
+        // placeholder method
     private void addPlaceholder(javax.swing.JTextField field, String placeholder) {
         field.setText(placeholder);
         field.setForeground(java.awt.Color.GRAY);
@@ -81,9 +95,48 @@ public void setVisible(boolean visible) {
                 }
             }
         });
+        
     }
 
+        private void updateBMIDetails() {
+            try {
+                // Create a temporary UserProfile instance with current form data
+                double weight = Double.parseDouble(weight_Section1Input.getText());
+                double height = Double.parseDouble(height_Section1Input.getText());
 
+        UserProfile tempProfile = new UserProfile(
+            0, //  ID
+            "", // not needed 
+            0, // not needed 
+            weight,
+            height,
+            "", // not needed
+            ""  // not needed
+        );
+
+        // Calculate and display bmi and classification
+        double bmi = tempProfile.calculateBMI();
+        if (bmi != -1) {
+            bmiTextField.setText(String.format("%.2f", bmi));
+            classificationTextField.setText(tempProfile.getBMIClassification());
+            recommendedTextField.setText("18.5 - 24.9"); // Example range
+            targetTextField.setText("22.0"); // Example target
+        } else {
+            bmiTextField.setText("N/A");
+            classificationTextField.setText("Invalid input");
+            recommendedTextField.setText("");
+            targetTextField.setText("");
+        }
+    } catch (NumberFormatException e) {
+        // invalid inputs 
+        bmiTextField.setText("N/A");
+        classificationTextField.setText("Invalid input");
+        recommendedTextField.setText("");
+        targetTextField.setText("");
+        System.err.println("Error updating BMI details: " + e.getMessage());
+    }
+    
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -106,16 +159,17 @@ public void setVisible(boolean visible) {
         age_Section1Input = new javax.swing.JTextField();
         weight_Section1Input = new javax.swing.JTextField();
         height_Section1Input = new javax.swing.JTextField();
-        notificationPreferenceLabel = new javax.swing.JLabel();
-        emailNotification_Label = new javax.swing.JLabel();
-        pushNotification_Label = new javax.swing.JLabel();
-        smsNotification_Label = new javax.swing.JLabel();
-        emailNotification_checkBox = new javax.swing.JCheckBox();
-        smsNotification_checkBox = new javax.swing.JCheckBox();
-        pushNotification_checkBox = new javax.swing.JCheckBox();
         homeButtonSection1 = new javax.swing.JButton();
         activityLevel_Section1Selector = new javax.swing.JComboBox<>();
         goal_Section1Selector = new javax.swing.JComboBox<>();
+        bmiLabel = new javax.swing.JLabel();
+        classificationLabel = new javax.swing.JLabel();
+        recommendedLabel = new javax.swing.JLabel();
+        targetLabel = new javax.swing.JLabel();
+        bmiTextField = new javax.swing.JLabel();
+        classificationTextField = new javax.swing.JLabel();
+        recommendedTextField = new javax.swing.JLabel();
+        targetTextField = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -140,20 +194,6 @@ public void setVisible(boolean visible) {
             }
         });
 
-        notificationPreferenceLabel.setText("Notification Preferences:");
-
-        emailNotification_Label.setText("Email");
-
-        pushNotification_Label.setText("Push");
-
-        smsNotification_Label.setText("SMS");
-
-        smsNotification_checkBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                smsNotification_checkBoxActionPerformed(evt);
-            }
-        });
-
         homeButtonSection1.setText("Home");
         homeButtonSection1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,6 +215,14 @@ public void setVisible(boolean visible) {
             }
         });
 
+        bmiLabel.setText("BMI:");
+
+        classificationLabel.setText("Classification:");
+
+        recommendedLabel.setText("Recommended Rage:");
+
+        targetLabel.setText("Ideal BMI target:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -184,12 +232,8 @@ public void setVisible(boolean visible) {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(updateButton_Section1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(homeButtonSection1))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(age_Section1Label)
@@ -200,78 +244,91 @@ public void setVisible(boolean visible) {
                             .addComponent(goal_Section1Label))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(goal_Section1Selector, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(activityLevel_Section1Selector, javax.swing.GroupLayout.Alignment.LEADING, 0, 162, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(weight_Section1Input, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(height_Section1Input, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(age_Section1Input, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(goal_Section1Selector, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(activityLevel_Section1Selector, javax.swing.GroupLayout.Alignment.LEADING, 0, 162, Short.MAX_VALUE)
-                                .addComponent(name_Section1Input, javax.swing.GroupLayout.Alignment.LEADING)))
-                        .addGap(100, 100, 100)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(emailNotification_Label)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(smsNotification_Label)
-                                        .addComponent(pushNotification_Label)))
-                                .addGap(38, 38, 38))
-                            .addComponent(emailNotification_checkBox)
-                            .addComponent(pushNotification_checkBox)
-                            .addComponent(smsNotification_checkBox)
-                            .addComponent(notificationPreferenceLabel))))
-                .addGap(98, 98, 98))
+                                .addComponent(age_Section1Input, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(name_Section1Input, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(classificationLabel)
+                                    .addComponent(bmiLabel)
+                                    .addComponent(targetLabel))
+                                .addGap(37, 37, 37))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(recommendedLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(updateButton_Section1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(homeButtonSection1)
+                    .addComponent(bmiTextField)
+                    .addComponent(classificationTextField)
+                    .addComponent(recommendedTextField)
+                    .addComponent(targetTextField))
+                .addGap(74, 74, 74))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jLabel1)
-                .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(name_Section1Label)
-                    .addComponent(name_Section1Input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(notificationPreferenceLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(age_Section1Label)
-                            .addComponent(age_Section1Input))
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(name_Section1Label)
+                            .addComponent(name_Section1Input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(age_Section1Label)
+                            .addComponent(age_Section1Input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(weight_Section1Label)
-                            .addComponent(weight_Section1Input))
+                            .addComponent(weight_Section1Input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(height_Section1Label)
-                            .addComponent(height_Section1Input)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(emailNotification_Label)
-                            .addComponent(emailNotification_checkBox))
+                            .addComponent(height_Section1Input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pushNotification_Label)
-                            .addComponent(pushNotification_checkBox))
-                        .addGap(4, 4, 4)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(smsNotification_Label)
-                            .addComponent(smsNotification_checkBox))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(activityLevel_Section1Label)
-                    .addComponent(activityLevel_Section1Selector, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(activityLevel_Section1Label)
+                            .addComponent(activityLevel_Section1Selector, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bmiLabel)
+                            .addComponent(bmiTextField))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(classificationLabel)
+                            .addComponent(classificationTextField))
+                        .addGap(9, 9, 9)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(recommendedLabel)
+                            .addComponent(recommendedTextField))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(targetLabel)
+                            .addComponent(targetTextField))
+                        .addGap(20, 20, 20)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(goal_Section1Label)
                     .addComponent(goal_Section1Selector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(updateButton_Section1)
                     .addComponent(homeButtonSection1))
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -301,11 +358,11 @@ public void setVisible(boolean visible) {
         // Save the user profile to the database
         saveUserProfile();
 
-        // Reload the profile to ensure the updated data is displayed
-        initializeUserProfile();
-
         // Show success message
         JOptionPane.showMessageDialog(this, "Details updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+        // Optionally reload the profile (if necessary)
+        // initializeUserProfile();
     } catch (Exception e) {
         JOptionPane.showMessageDialog(this, "An error occurred while updating details: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
     }
@@ -319,30 +376,23 @@ public void setVisible(boolean visible) {
         // TODO add your handling code here:
     }//GEN-LAST:event_goal_Section1SelectorActionPerformed
 
-    private void smsNotification_checkBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_smsNotification_checkBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_smsNotification_checkBoxActionPerformed
-
     private void saveUserProfile() {
         try {
-        // Create a new UserProfile object from the form fields
+        // new UserProfile object 
         UserProfile updatedProfile = new UserProfile(
-            1, // Assuming the user ID is 1
+            1, // if the user ID is 1
             name_Section1Input.getText(),
             Integer.parseInt(age_Section1Input.getText()),
             Double.parseDouble(weight_Section1Input.getText()),
             Double.parseDouble(height_Section1Input.getText()),
             activityLevel_Section1Selector.getSelectedItem().toString(),
-            goal_Section1Selector.getSelectedItem().toString(),
-            emailNotification_checkBox.isSelected(),
-            pushNotification_checkBox.isSelected(),
-            smsNotification_checkBox.isSelected()
+            goal_Section1Selector.getSelectedItem().toString()
         );
 
-        // Save or update the user profile in the database
+        // Save or update the user profile in the DB
         HealthDataDB db = new HealthDataDB();
         db.getConnection();
-        db.saveOrUpdateUserProfile(updatedProfile); // Save the updated profile to the database
+        db.saveOrUpdateUserProfile(updatedProfile); // Save to the DB
         db.closeConnection();
 
         // Log success
@@ -394,8 +444,10 @@ public void setVisible(boolean visible) {
     private javax.swing.JComboBox<String> activityLevel_Section1Selector;
     private javax.swing.JTextField age_Section1Input;
     private javax.swing.JLabel age_Section1Label;
-    private javax.swing.JLabel emailNotification_Label;
-    private javax.swing.JCheckBox emailNotification_checkBox;
+    private javax.swing.JLabel bmiLabel;
+    private javax.swing.JLabel bmiTextField;
+    private javax.swing.JLabel classificationLabel;
+    private javax.swing.JLabel classificationTextField;
     private javax.swing.JLabel goal_Section1Label;
     private javax.swing.JComboBox<String> goal_Section1Selector;
     private javax.swing.JTextField height_Section1Input;
@@ -405,11 +457,10 @@ public void setVisible(boolean visible) {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField name_Section1Input;
     private javax.swing.JLabel name_Section1Label;
-    private javax.swing.JLabel notificationPreferenceLabel;
-    private javax.swing.JLabel pushNotification_Label;
-    private javax.swing.JCheckBox pushNotification_checkBox;
-    private javax.swing.JLabel smsNotification_Label;
-    private javax.swing.JCheckBox smsNotification_checkBox;
+    private javax.swing.JLabel recommendedLabel;
+    private javax.swing.JLabel recommendedTextField;
+    private javax.swing.JLabel targetLabel;
+    private javax.swing.JLabel targetTextField;
     private javax.swing.JButton updateButton_Section1;
     private javax.swing.JTextField weight_Section1Input;
     private javax.swing.JLabel weight_Section1Label;

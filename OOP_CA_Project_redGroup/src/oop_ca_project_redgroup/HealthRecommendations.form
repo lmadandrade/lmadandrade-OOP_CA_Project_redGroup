@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="jPanel1">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="nutritionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="exerciseLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="hydrationLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="sleepLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="activityLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="healthGoalLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="nutritionValueLabel" max="32767" attributes="0"/>
+                              <Component id="exerciseValueLabel" max="32767" attributes="0"/>
+                              <Component id="hydrationValueLabel" max="32767" attributes="0"/>
+                              <Component id="sleepValueLabel" max="32767" attributes="0"/>
+                              <Component id="activityValueLabel" max="32767" attributes="0"/>
+                              <Component id="healthValueLabel" pref="330" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="182" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="31" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <Component id="homeButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="34" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="nutritionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="nutritionValueLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="exerciseLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="exerciseValueLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="hydrationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="hydrationValueLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="sleepLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="sleepValueLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="activityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="activityValueLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="healthGoalLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="healthValueLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="homeButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="nutritionLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Nutrition Recommendations:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="exerciseLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Exercise Recommendations:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="hydrationLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Hydration Tips:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="sleepLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Sleep Recommendations:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="activityLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Activity Level Enhancements:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="healthGoalLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Health Goal Alignment:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="nutritionValueLabel">
+        </Component>
+        <Component class="javax.swing.JLabel" name="exerciseValueLabel">
+        </Component>
+        <Component class="javax.swing.JLabel" name="hydrationValueLabel">
+        </Component>
+        <Component class="javax.swing.JLabel" name="sleepValueLabel">
+        </Component>
+        <Component class="javax.swing.JLabel" name="activityValueLabel">
+        </Component>
+        <Component class="javax.swing.JLabel" name="healthValueLabel">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Your Health Recommendations:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="homeButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Home"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="homeButtonActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>
